@@ -5,6 +5,8 @@
  */
 package Interface_sistema_de_supermercado;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Natalo Santos
@@ -16,6 +18,8 @@ public class Tela_Loguin extends javax.swing.JFrame {
      */
     public Tela_Loguin() {
         initComponents();
+        this.setLocationRelativeTo(null); //tela no centro
+
     }
 
     /**
@@ -27,21 +31,106 @@ public class Tela_Loguin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        T1_Login = new javax.swing.JLabel();
+        T1_SENHA = new javax.swing.JLabel();
+        C1_LOGUIN = new javax.swing.JTextField();
+        C1_SENHA = new javax.swing.JPasswordField();
+        Bttn1_Entrar = new javax.swing.JButton();
+        Bttn1_Cadastrar = new javax.swing.JButton();
+        T1_N_SuperM = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        T1_Login.setText("LOGIN:");
+
+        T1_SENHA.setText("SENHA:");
+
+        C1_SENHA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C1_SENHAActionPerformed(evt);
+            }
+        });
+
+        Bttn1_Entrar.setText("Entrar");
+
+        Bttn1_Cadastrar.setText("Cadastrar Funcionário");
+        Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn1_CadastrarActionPerformed(evt);
+            }
+        });
+
+        T1_N_SuperM.setText("SUPERMERCADO  DO TEAM STI");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(T1_SENHA)
+                    .addComponent(T1_Login))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Bttn1_Entrar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Bttn1_Cadastrar))
+                    .addComponent(C1_LOGUIN)
+                    .addComponent(C1_SENHA))
+                .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(C1_LOGUIN)
+                    .addComponent(T1_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(C1_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T1_SENHA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Bttn1_Entrar)
+                    .addComponent(Bttn1_Cadastrar))
+                .addContainerGap(82, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void C1_SENHAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_SENHAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C1_SENHAActionPerformed
+
+    private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
+         Tela_Cadastro Tela_C= new Tela_Cadastro (); //chama a tela de cadastro
+         Tela_C.setVisible(true);             // serve para mostrar o Jframe na tela
+         Tela_C.setLocationRelativeTo(null);     // tela no centro 
+         Tela_C.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         this.dispose();        //fecha a tela após o click 
+    }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +168,13 @@ public class Tela_Loguin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bttn1_Cadastrar;
+    private javax.swing.JButton Bttn1_Entrar;
+    private javax.swing.JTextField C1_LOGUIN;
+    private javax.swing.JPasswordField C1_SENHA;
+    private javax.swing.JLabel T1_Login;
+    private javax.swing.JLabel T1_N_SuperM;
+    private javax.swing.JLabel T1_SENHA;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

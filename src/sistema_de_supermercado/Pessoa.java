@@ -6,6 +6,7 @@ public class Pessoa {
     protected String birthDate;
     protected int cpf;
     protected int tipoUser;
+    
             
     public void setNome(String nome){
         this.nome = nome;
