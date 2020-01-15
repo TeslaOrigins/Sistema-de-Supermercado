@@ -11,9 +11,8 @@ public class Chefe extends Pessoa{
     }
     public Chefe(){}
     
-    public double pagarSalario(){
-        
-    }
+    //public double pagarSalario(){
+        // }
     
     public void contratar(){
         Cliente c = new Cliente();
