@@ -100,6 +100,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="C1_LOGUIN">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C1_LOGUINActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="C1_SENHA">
           <Events>

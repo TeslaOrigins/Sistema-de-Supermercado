@@ -65,7 +65,7 @@
                                       <Component id="Bttn1_Cancelar" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="C2_Login" max="32767" attributes="0"/>
-                                  <Component id="C2_Senha" max="32767" attributes="0"/>
+                                  <Component id="C2_Senha" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -110,7 +110,7 @@
                   <Component id="Bttn1_Cadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Bttn1_Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -147,6 +147,9 @@
           <Format format="###.###.###-##" subtype="-1" type="5"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C1_CPFActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="C1_telefone">
       <Properties>
@@ -164,23 +167,35 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="C2_Login">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C2_LoginActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="T2_Senha">
       <Properties>
         <Property name="text" type="java.lang.String" value="Senha:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="C2_Senha">
-    </Component>
     <Component class="javax.swing.JButton" name="Bttn1_Cadastrar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Bttn1_CadastrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Bttn1_Cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Bttn1_CancelarActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="C2_Senha">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C2_SenhaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

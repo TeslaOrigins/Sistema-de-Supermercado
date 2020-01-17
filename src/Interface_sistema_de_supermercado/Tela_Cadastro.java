@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Interface_sistema_de_supermercado;
 
+package Interface_sistema_de_supermercado;
+import javax.swing.JOptionPane;
+  import sistema_de_supermercado.Pessoa; 
 /**
  *
  * @author Natalo Santos
@@ -40,9 +37,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         T2_login = new javax.swing.JLabel();
         C2_Login = new javax.swing.JTextField();
         T2_Senha = new javax.swing.JLabel();
-        C2_Senha = new javax.swing.JTextField();
         Bttn1_Cadastrar = new javax.swing.JButton();
         Bttn1_Cancelar = new javax.swing.JButton();
+        C2_Senha = new javax.swing.JPasswordField();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -67,6 +64,11 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        C1_CPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C1_CPFActionPerformed(evt);
+            }
+        });
 
         try {
             C1_telefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
@@ -81,11 +83,33 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         T2_login.setText("Login:");
 
+        C2_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C2_LoginActionPerformed(evt);
+            }
+        });
+
         T2_Senha.setText("Senha:");
 
         Bttn1_Cadastrar.setText("Cadastrar");
+        Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn1_CadastrarActionPerformed(evt);
+            }
+        });
 
         Bttn1_Cancelar.setText("Cancelar");
+        Bttn1_Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn1_CancelarActionPerformed(evt);
+            }
+        });
+
+        C2_Senha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C2_SenhaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,7 +176,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Cadastrar)
                     .addComponent(Bttn1_Cancelar))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,6 +189,40 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private void C1_telefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_telefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_C1_telefoneActionPerformed
+
+    private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
+       Pessoa cadastro = new Pessoa();
+       cadastro.setNome(C1_Nome.getText());
+       cadastro.setCel(C1_telefone.getText());
+       cadastro.setCpf(C1_CPF.getText());
+       cadastro.setLogin(C2_Login.getText());
+       cadastro.setSenha(C2_Senha.getText());
+       
+       JOptionPane.showMessageDialog(null,cadastro.Salvar_arq());
+       
+       cadastro.setNome("");
+       cadastro.setCel("");
+       cadastro.setCpf("");
+       cadastro.setLogin("");
+       cadastro.setSenha("");
+            
+    }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
+
+    private void C1_CPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C1_CPFActionPerformed
+
+    private void C2_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2_LoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C2_LoginActionPerformed
+
+    private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
+        
+    }//GEN-LAST:event_Bttn1_CancelarActionPerformed
+
+    private void C2_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2_SenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C2_SenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,7 +266,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextField C1_Nome;
     private javax.swing.JFormattedTextField C1_telefone;
     private javax.swing.JTextField C2_Login;
-    private javax.swing.JTextField C2_Senha;
+    private javax.swing.JPasswordField C2_Senha;
     private javax.swing.JLabel T1_CPF;
     private javax.swing.JLabel T1_Nome;
     private javax.swing.JLabel T1_telefone;

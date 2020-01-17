@@ -2,7 +2,7 @@ package sistema_de_supermercado;
 
 public class Chefe extends Pessoa{
     
-    public Chefe(String nome, String cel, String birthDate, int cpf, int tipoUser){
+    public Chefe(String nome, String cel, String birthDate, String cpf, int tipoUser){
         super.nome = nome;
         super.cel = cel;
         super.birthDate = birthDate;

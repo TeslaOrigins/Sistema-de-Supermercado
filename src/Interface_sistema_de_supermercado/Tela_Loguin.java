@@ -46,6 +46,12 @@ public class Tela_Loguin extends javax.swing.JFrame {
 
         T1_SENHA.setText("SENHA:");
 
+        C1_LOGUIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C1_LOGUINActionPerformed(evt);
+            }
+        });
+
         C1_SENHA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 C1_SENHAActionPerformed(evt);
@@ -131,6 +137,9 @@ public class Tela_Loguin extends javax.swing.JFrame {
          Tela_C.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          this.dispose();        //fecha a tela após o click 
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
+
+    private void C1_LOGUINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_LOGUINActionPerformed
+    }//GEN-LAST:event_C1_LOGUINActionPerformed
 
     /**
      * @param args the command line arguments
