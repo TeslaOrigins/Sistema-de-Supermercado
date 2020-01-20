@@ -5,6 +5,10 @@
  */
 package Interface_sistema_de_supermercado;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -59,6 +63,11 @@ public class Tela_Loguin extends javax.swing.JFrame {
         });
 
         Bttn1_Entrar.setText("Entrar");
+        Bttn1_Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn1_EntrarActionPerformed(evt);
+            }
+        });
 
         Bttn1_Cadastrar.setText("Cadastrar Funcionário");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -140,6 +149,28 @@ public class Tela_Loguin extends javax.swing.JFrame {
 
     private void C1_LOGUINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_LOGUINActionPerformed
     }//GEN-LAST:event_C1_LOGUINActionPerformed
+
+    private void Bttn1_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_EntrarActionPerformed
+     /*   C1_LOGUIN.getText(); C1_SENHA.getText();
+        try{
+            FileReader fr = new FileReader("Cadastro.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String linha;
+            ArrayList <String> list = new ArrayList();
+            while((linha = br.readLine()) != null){
+                list.add(linha);
+            }
+        }catch(IOException ex){
+            System.out.println("ERRROR ON CREATION");
+            ex.printStackTrace();
+        }
+        for (int i = 0;i < 5;i++){
+            
+        }*/
+        
+        
+        
+    }//GEN-LAST:event_Bttn1_EntrarActionPerformed
 
     /**
      * @param args the command line arguments
