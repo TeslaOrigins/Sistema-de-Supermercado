@@ -1,15 +1,18 @@
+package Interface_sistema_de_supermercado;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface_sistema_de_supermercado;
 
+
+import javax.swing.JFrame;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.JFrame;
+import sistema_de_supermercado.Pessoa;
 
 /**
  *
@@ -151,7 +154,7 @@ public class Tela_Loguin extends javax.swing.JFrame {
     }//GEN-LAST:event_C1_LOGUINActionPerformed
 
     private void Bttn1_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_EntrarActionPerformed
-     /*   C1_LOGUIN.getText(); C1_SENHA.getText();
+       /* C1_LOGUIN.getText(); C1_SENHA.getText();
         try{
             FileReader fr = new FileReader("Cadastro.txt");
             BufferedReader br = new BufferedReader(fr);
@@ -166,7 +169,7 @@ public class Tela_Loguin extends javax.swing.JFrame {
         }
         for (int i = 0;i < 5;i++){
             
-        }*/
+        } */
         
         
         
