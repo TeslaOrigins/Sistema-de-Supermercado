@@ -10,3 +10,5 @@ O projeto conta com interface Swing, onde é possível fazer:
 - Pesquisar por produtos através de palavras;
 - Salvar e ler dados do disco;
 - Gerar relatórios sobre vendas e estoque.
+
+Participantes: Mateus, Nátalo Santos, Paulo Eduardo
