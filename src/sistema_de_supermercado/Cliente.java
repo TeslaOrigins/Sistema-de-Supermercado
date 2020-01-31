@@ -4,7 +4,7 @@ public class Cliente extends Pessoa{
     private Integer metodoPag;
     private String lista;
     
-    public Cliente(String nome, String cel, String birthDate, int cpf, int tipoUser, Integer metodoPag, String lista){
+    public Cliente(String nome, String cel, String birthDate, String cpf, int tipoUser, Integer metodoPag, String lista){
         super.nome = nome;
         super.cel = cel;
         super.birthDate = birthDate;

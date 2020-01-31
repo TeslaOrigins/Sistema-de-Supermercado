@@ -1,7 +1,7 @@
 package sistema_de_supermercado;
 
 public class Gerente {
-    private Produto p;
+   // private Produto p;
     
     public void addProdutoEmEstoque(){
         
@@ -15,11 +15,11 @@ public class Gerente {
         
     }
     
-    public void setProduto(Produto p){
-        this.p = p;
-    }
+    //public void setProduto(Produto p){
+        //this.p = p;
+    //}
     
-    public Produto getProduto(){
-        return this.p;
-    }
+    //public Produto getProduto(){
+      //  return this.p;
+    //}
 }

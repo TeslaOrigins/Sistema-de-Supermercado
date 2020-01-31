@@ -1,0 +1,3 @@
+Nome:eu;Telefone:(43)54353-3513;CPF:535.435.435-53;eu;123
+Nome:;Telefone:(  )     -    ;CPF:   .   .   -  ;oi;1234
+Nome:;Telefone:(  )     -    ;CPF:   .   .   -  ;leo;123
