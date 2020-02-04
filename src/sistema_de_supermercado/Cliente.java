@@ -1,5 +1,9 @@
 package sistema_de_supermercado;
 
+/**
+ *
+ * @author Matheus Lourenço
+ */
 public class Cliente extends Pessoa{
     private Integer metodoPag;
     private String lista;

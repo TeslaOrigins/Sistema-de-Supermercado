@@ -1,5 +1,9 @@
 package sistema_de_supermercado;
 
+/**
+ *
+ * @author Matheus Lourenço
+ */
 public class Gerente {
    // private Produto p;
     
