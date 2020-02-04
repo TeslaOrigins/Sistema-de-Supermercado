@@ -3,7 +3,8 @@ package Interface_sistema_de_supermercado;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
-import Controller.Contorle_Cadastro;
+import Controller.Controle_Cadastro;
+import sistema_de_supermercado.TipoUsuario;
 
 /**
  *
@@ -17,7 +18,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     public Tela_Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
-
     }
 
     /**
@@ -298,6 +298,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setCpf(C1_CPF.getText());
         cadastro.setLogin(C2_Login.getText());
         cadastro.setSenha(String.valueOf(C2_Senha.getPassword()));
+        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO);
 
         JOptionPane.showMessageDialog(null, cadastro.Salvar_arq());
 
@@ -306,6 +307,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setCpf("");
         cadastro.setLogin("");
         cadastro.setSenha("");
+        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO);
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed

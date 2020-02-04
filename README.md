@@ -11,4 +11,4 @@ O projeto conta com interface Swing, onde é possível fazer:
 - Salvar e ler dados do disco;
 - Gerar relatórios sobre vendas e estoque.
 
-Participantes: Mateus, Nátalo Santos, Paulo Eduardo
+Participantes: Matheus Lourenço, Nátalo Santos, Paulo Eduardo

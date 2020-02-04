@@ -16,7 +16,7 @@ import sistema_de_supermercado.Pessoa;
  *
  * @author Natalo Santos
  */
-public class Contorle_Cadastro {
+public class Controle_Cadastro {
     /*public String Salvar_arq(){
         try{                                                   //tenta executar o codigo e indica que possa ocorrer um exceçaõ(erro)
           FileWriter fw= new FileWriter ("Cadastro.txt",true); //Construtor que recebe o obejeto do tipo cadastro.txt,escreve diretamente no arquivo se ele existir e acrescenta .

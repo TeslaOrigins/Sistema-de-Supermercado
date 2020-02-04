@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import sistema_de_supermercado.TipoUsuario;
 
 /**
  *
@@ -22,7 +23,7 @@ import javax.swing.JOptionPane;
 public class Tela_Login extends javax.swing.JFrame {
 
     /**
-     * Creates new form Tela_Loguin
+     * Creates new form Tela_Login
      */
     public Tela_Login() {
         initComponents();
@@ -186,26 +187,57 @@ public class Tela_Login extends javax.swing.JFrame {
 
     private void Bttn1_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_EntrarActionPerformed
         File cadastro = new File("Cadastro.txt");
-        String login = C1_LOGIN.getText().trim();
-        String senha = String.valueOf(C1_SENHA.getPassword()); //usa valueOf pq o campo é senha é um char, e quermos o text.
+        int tipo = 0;
         boolean achou = false;
+        String login = C1_LOGIN.getText().trim();
+        String senha = String.valueOf(C1_SENHA.getPassword()); //usa valueOf pq o campo é senha é um char, e queremos o text.
+        
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));
             while (in.hasNextLine()) {
                 String s = in.nextLine();
                 String[] sArray = s.split(";");
+                String tipoUser = sArray[5];
                 //System.out.println(sArray[0]); // verificar pelo próprio console do netbeans se ta pegando o vetor.
                 // System.out.println(sArray[1]);
-
+                
                 if (login.equals(sArray[3]) && senha.equals(sArray[4])) {
-                    achou = true;
-
+                    if(tipoUser.equals(TipoUsuario.usuarioFuncionarioToString())){
+                        tipo = TipoUsuario.USUARIO_FUNCIONARIO;
+                    } else if(tipoUser.equals(TipoUsuario.usuarioGerenteToString())){    
+                        tipo = TipoUsuario.USUARIO_GERENTE;
+                    } else if(tipoUser.equals(TipoUsuario.usuarioChefeToString())){
+                        tipo = TipoUsuario.USUARIO_CHEFE;
+                    }               
                 }
             }
-            if (achou == true) {
-                JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "senha/login incorreto", "error", JOptionPane.ERROR_MESSAGE);
+            switch(tipo){
+                case TipoUsuario.USUARIO_FUNCIONARIO:
+                    JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
+                    Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
+                    Tela_IF.setLocationRelativeTo(null);       // tela no centro 
+                    Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    this.dispose();                           //fecha a tela após o click 
+                    break;
+                case TipoUsuario.USUARIO_GERENTE:
+                    JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
+                    Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
+                    Tela_IG.setLocationRelativeTo(null);       // tela no centro 
+                    Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    this.dispose();
+                    break;
+                case TipoUsuario.USUARIO_CHEFE:   
+                    JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    Tela_Interna_Chefe Tela_IC = new Tela_Interna_Chefe(); //chama a tela interna Chefe
+                    Tela_IC.setVisible(true);                  // serve para mostrar o Jframe na tela
+                    Tela_IC.setLocationRelativeTo(null);       // tela no centro 
+                    Tela_IC.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    this.dispose();
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "error", JOptionPane.ERROR_MESSAGE);
             }
 
             in.close();

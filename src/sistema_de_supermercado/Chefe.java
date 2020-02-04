@@ -1,5 +1,9 @@
 package sistema_de_supermercado;
 
+/**
+ *
+ * @author Matheus Lourenço
+ */
 public class Chefe extends Pessoa{
     
     public Chefe(String nome, String cel, String birthDate, String cpf, int tipoUser){
