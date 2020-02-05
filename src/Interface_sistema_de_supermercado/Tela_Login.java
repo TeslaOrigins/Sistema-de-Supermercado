@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
 
 /**
@@ -190,7 +191,7 @@ public class Tela_Login extends javax.swing.JFrame {
         int tipo = 0;
         boolean achou = false;
         String login = C1_LOGIN.getText().trim();
-        String senha = String.valueOf(C1_SENHA.getPassword()); //usa valueOf pq o campo é senha é um char, e queremos o text.
+        String senha = CriptografaSenha.encryptPasswd(String.valueOf(C1_SENHA.getPassword()), CriptografaSenha.SECRET_KEY); //usa valueOf pq o campo é senha é um char, e queremos o text.
         
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));
@@ -198,8 +199,6 @@ public class Tela_Login extends javax.swing.JFrame {
                 String s = in.nextLine();
                 String[] sArray = s.split(";");
                 String tipoUser = sArray[5];
-                //System.out.println(sArray[0]); // verificar pelo próprio console do netbeans se ta pegando o vetor.
-                // System.out.println(sArray[1]);
                 
                 if (login.equals(sArray[3]) && senha.equals(sArray[4])) {
                     if(tipoUser.equals(TipoUsuario.usuarioFuncionarioToString())){
