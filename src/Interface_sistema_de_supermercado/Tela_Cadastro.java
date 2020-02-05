@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
 import Controller.Controle_Cadastro;
+import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
 
 /**
@@ -297,17 +298,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setCel(C1_telefone.getText());
         cadastro.setCpf(C1_CPF.getText());
         cadastro.setLogin(C2_Login.getText());
-        cadastro.setSenha(String.valueOf(C2_Senha.getPassword()));
+        cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
         cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO);
 
         JOptionPane.showMessageDialog(null, cadastro.Salvar_arq());
-
-        cadastro.setNome("");
-        cadastro.setCel("");
-        cadastro.setCpf("");
-        cadastro.setLogin("");
-        cadastro.setSenha("");
-        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO);
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed

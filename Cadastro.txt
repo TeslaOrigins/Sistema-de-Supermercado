@@ -3,3 +3,8 @@ Nome:;Telefone:(  )     -    ;CPF:   .   .   -  ;oi;1234;3
 Nome:;Telefone:(  )     -    ;CPF:   .   .   -  ;leo;123;2
 Nome:carlo;Telefone:(79)99199-0893;CPF:000.000.000-00;carlo;123456;1
 Nome:bob;Telefone:(79)99999-9999;CPF:000.000.000-00;bob;123456;1
+Nome:Diego Anderson Rezende;Telefone:(79)93804-2472;CPF:978.560.715-16;diego;QX2KJGT6bdDjudHVRPbXpQ==;1
+Nome:asdasd;Telefone:(12)11111-1111;CPF:111.111.111-11;asdfasdf;QX2KJGT6bdDjudHVRPbXpQ==;1
+Nome:aaaaaa;Telefone:(11)11111-1111;CPF:111.111.111-11;ssssss;QX2KJGT6bdDjudHVRPbXpQ==;1
+Nome:aaaaaaaaaaaaaaaa;Telefone:(11)11111-1111;CPF:111.111.111-11;asdas;QX2KJGT6bdDjudHVRPbXpQ==;1
+Nome:;Telefone:(  )     -    ;CPF:   .   .   -  ;;KK4ZKEVxTlU2Ptb1Jemblw==;1
