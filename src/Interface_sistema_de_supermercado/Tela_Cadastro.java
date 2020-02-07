@@ -82,16 +82,26 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(44, 62, 80));
 
+        T1_Nome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_Nome.setForeground(new java.awt.Color(255, 255, 255));
         T1_Nome.setText("Nome:");
 
+        T1_telefone.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_telefone.setForeground(new java.awt.Color(255, 255, 255));
         T1_telefone.setText("Telefone:");
 
+        T1_CPF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_CPF.setForeground(new java.awt.Color(255, 255, 255));
         T1_CPF.setText("CPF:");
 
+        T2_login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T2_login.setForeground(new java.awt.Color(255, 255, 255));
         T2_login.setText("Login:");
 
+        T2_Senha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T2_Senha.setForeground(new java.awt.Color(255, 255, 255));
         T2_Senha.setText("Senha:");
 
         C1_Nome.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +144,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
+        T1_Cargo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_Cargo.setForeground(new java.awt.Color(255, 255, 255));
         T1_Cargo.setText("Cargo:");
 
         C1_Cargo.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +154,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
+        T1_nvl_acesso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_nvl_acesso.setForeground(new java.awt.Color(255, 255, 255));
         T1_nvl_acesso.setText("Nível de acesso:");
 
         CB_NVL_ACESSO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -169,10 +183,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
-        jPanel5.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel5.setBackground(new java.awt.Color(248, 148, 6));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CADASTRO FUNCIONÁRIOS");
 
@@ -181,16 +195,16 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(183, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(234, 234, 234))
+                .addGap(174, 174, 174))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
