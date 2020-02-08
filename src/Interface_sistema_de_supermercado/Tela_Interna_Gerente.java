@@ -17,6 +17,8 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
     public Tela_Interna_Gerente() {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
+                setResizable(false); // bloqueia o maximizar 
+
     }
 
     /**

@@ -29,6 +29,7 @@ public class Tela_Login extends javax.swing.JFrame {
     public Tela_Login() {
         initComponents();
         this.setLocationRelativeTo(null); //tela no centro
+        setResizable(false); //bloqueia o maximizar 
 
     }
 

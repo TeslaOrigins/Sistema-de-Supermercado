@@ -19,6 +19,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     public Tela_Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
+        setResizable(false); //bloqueia o maximizar 
+
     }
 
     /**
@@ -326,10 +328,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         this.dispose();        //fecha a tela após o click
     }//GEN-LAST:event_Bttn1_CancelarActionPerformed
 
-    private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_C1_CargoActionPerformed
-
     private void C2_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2_SenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_C2_SenhaActionPerformed
@@ -353,6 +351,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private void CB_NVL_ACESSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NVL_ACESSOActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CB_NVL_ACESSOActionPerformed
+
+    private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C1_CargoActionPerformed
 
     /**
      * @param args the command line arguments
