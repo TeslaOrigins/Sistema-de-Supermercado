@@ -244,7 +244,7 @@ public class Tela_Login extends javax.swing.JFrame {
                     this.dispose();
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "erro", JOptionPane.ERROR_MESSAGE);
             }
 
             in.close();
