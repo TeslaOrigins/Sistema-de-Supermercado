@@ -8,3 +8,5 @@ Nome:asdasd;Telefone:(12)11111-1111;CPF:111.111.111-11;asdfasdf;QX2KJGT6bdDjudHV
 Nome:aaaaaa;Telefone:(11)11111-1111;CPF:111.111.111-11;ssssss;QX2KJGT6bdDjudHVRPbXpQ==;1
 Nome:aaaaaaaaaaaaaaaa;Telefone:(11)11111-1111;CPF:111.111.111-11;asdas;QX2KJGT6bdDjudHVRPbXpQ==;1
 Nome:;Telefone:(  )     -    ;CPF:   .   .   -  ;;KK4ZKEVxTlU2Ptb1Jemblw==;1
+Nome:Paulo Eduardo;Telefone:(79)99999-9999;CPF:000.333.003-22;paulo_eu;null;1
+Nome:EU;Telefone:(22)22222-2222;CPF:222.222.222-22;eu.eu;null;1
