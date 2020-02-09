@@ -142,9 +142,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
-        Bttn1_Cancelar.setBackground(new java.awt.Color(102, 0, 0));
+        Bttn1_Cancelar.setBackground(new java.awt.Color(192, 57, 43));
         Bttn1_Cancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        Bttn1_Cancelar.setText("Voltar");
+        Bttn1_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        Bttn1_Cancelar.setText("Cancelar");
         Bttn1_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Bttn1_CancelarActionPerformed(evt);
@@ -153,6 +154,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         Bttn1_Cadastrar.setBackground(new java.awt.Color(0, 102, 0));
         Bttn1_Cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cadastrar.setText("Cadastrar");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
