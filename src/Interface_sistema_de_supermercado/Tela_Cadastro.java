@@ -6,6 +6,7 @@ import sistema_de_supermercado.Pessoa;
 import Controller.Controle_Cadastro;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //ela no centro
         T1_Cargo.setVisible(false);
         C1_Cargo.setVisible(false);
+        Bttn1_Alterar.setVisible(false);
     }
 
     /**
@@ -58,6 +60,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         Bttn1_Cadastrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        Bttn1_Alterar = new javax.swing.JButton();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -191,7 +194,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39))
         );
@@ -202,6 +205,14 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        Bttn1_Alterar.setBackground(new java.awt.Color(255, 255, 0));
+        Bttn1_Alterar.setText("Alterar");
+        Bttn1_Alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn1_AlterarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -229,7 +240,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Bttn1_Cadastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Bttn1_Alterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Bttn1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(100, 100, 100))
                     .addComponent(C2_Login)
@@ -274,8 +287,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Cancelar)
-                    .addComponent(Bttn1_Cadastrar))
-                .addGap(13, 13, 13))
+                    .addComponent(Bttn1_Cadastrar)
+                    .addComponent(Bttn1_Alterar))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -300,16 +314,16 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
-
         Pessoa cadastro = new Pessoa();
+
         cadastro.setNome(C1_Nome.getText());
         cadastro.setCel(C1_telefone.getText());
         cadastro.setCpf(C1_CPF.getText());
         cadastro.setLogin(C2_Login.getText());
         cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
-        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO);
+        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
 
-        JOptionPane.showMessageDialog(null, cadastro.Salvar_arq());
+        JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
@@ -362,6 +376,38 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_C1_NomeActionPerformed
 
+    private void Bttn1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_AlterarActionPerformed
+        try {
+            Scanner in = new Scanner(new File("Cadastro.txt"));
+            Pessoa cadastro = new Pessoa();
+            
+            cadastro.setNome(C1_Nome.getText());
+            cadastro.setCel(C1_telefone.getText());
+            cadastro.setCpf(C1_CPF.getText());
+            cadastro.setLogin(C2_Login.getText());
+            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
+            cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
+            
+            while (in.hasNextLine()) {
+                String s = in.nextLine();
+                String[] sArray = s.split(";");                
+                
+                if(C1_Nome.getText().equals(sArray[0])){
+                    cadastro.alterarArq(sArray[0], C1_Nome.getText());
+                    cadastro.alterarArq(sArray[1], C1_telefone.getText());
+                    cadastro.alterarArq(sArray[2], C1_CPF.getText());
+                    cadastro.alterarArq(sArray[3], C2_Login.getText());
+                    cadastro.alterarArq(sArray[4], String.valueOf(C2_Senha.getPassword()));
+                    cadastro.alterarArq(sArray[4], TipoUsuario.textUsuarioString(C1_Cargo.getText()));
+                }
+                
+            }
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+        } catch (IOException ex) {
+            Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Bttn1_AlterarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -398,6 +444,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bttn1_Alterar;
     private javax.swing.JButton Bttn1_Cadastrar;
     private javax.swing.JButton Bttn1_Cancelar;
     private javax.swing.JFormattedTextField C1_CPF;
@@ -423,6 +470,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
     public javax.swing.JButton getBttn1_Cadastrar(){
         return this.Bttn1_Cadastrar;
+    }
+    
+    public javax.swing.JButton getBttn1_Alterar(){
+        return this.Bttn1_Alterar;
     }
     
     public javax.swing.JLabel getJLabel1(){

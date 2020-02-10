@@ -209,19 +209,20 @@ public class Tela_Login extends javax.swing.JFrame {
                 String s = in.nextLine();
                 String[] sArray = s.split(";");
                 String tipoUser = sArray[5];
+                System.out.println(sArray[0]);
                 
                 if (login.equals(sArray[3]) && senha.equals(sArray[4])) {
                     if(tipoUser.equals(TipoUsuario.usuarioFuncionarioToString())){
-                        tipo = TipoUsuario.USUARIO_FUNCIONARIO;
+                        tipo = TipoUsuario.USUARIO_FUNCIONARIO_INT;
                     } else if(tipoUser.equals(TipoUsuario.usuarioGerenteToString())){    
-                        tipo = TipoUsuario.USUARIO_GERENTE;
+                        tipo = TipoUsuario.USUARIO_GERENTE_INT;
                     } else if(tipoUser.equals(TipoUsuario.usuarioChefeToString())){
-                        tipo = TipoUsuario.USUARIO_CHEFE;
+                        tipo = TipoUsuario.USUARIO_CHEFE_INT;
                     }               
                 }
             }
             switch(tipo){
-                case TipoUsuario.USUARIO_FUNCIONARIO:
+                case TipoUsuario.USUARIO_FUNCIONARIO_INT:
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
                     Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
@@ -229,7 +230,7 @@ public class Tela_Login extends javax.swing.JFrame {
                     Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();                           //fecha a tela após o click 
                     break;
-                case TipoUsuario.USUARIO_GERENTE:
+                case TipoUsuario.USUARIO_GERENTE_INT:
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
                     Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
@@ -237,12 +238,12 @@ public class Tela_Login extends javax.swing.JFrame {
                     Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();
                     break;
-                case TipoUsuario.USUARIO_CHEFE:   
+                case TipoUsuario.USUARIO_CHEFE_INT:   
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Tela_Cadastro Tela_C = new Tela_Cadastro(); //chama a tela interna Chefe
-                    Tela_C.setVisible(true);                  // serve para mostrar o Jframe na tela
-                    Tela_C.setLocationRelativeTo(null);       // tela no centro 
-                    Tela_C.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    Tela_Busca Tela_B = new Tela_Busca(); //chama a tela interna Chefe
+                    Tela_B.setVisible(true);                  // serve para mostrar o Jframe na tela
+                    Tela_B.setLocationRelativeTo(null);       // tela no centro 
+                    Tela_B.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();
                     break;
                 default:

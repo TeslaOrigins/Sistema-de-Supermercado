@@ -1,12 +1,9 @@
-;(  )     -    ;   .   .   -  ;oiii;null;1
-;(  )     -    ;   .   .   -  ;natalo;null;1
-;(  )     -    ;   .   .   -  ;Julios;null;1
-;(  )     -    ;   .   .   -  ;natalo;null;1
-;(  )     -    ;   .   .   -  ;;null;1
-FGFDHG;(  )     -    ;534.453.453-44;HGJDFJGFT;null;1
-5654863;(  )     -    ;   .   .   -  ;TRTE;null;1
-TYHDHXTJ;(54)34536-5463;   .   .   -  ;GFRHD;null;1
-TYHDHXTJ;(54)34536-5463;   .   .   -  ;GSDFG;null;1
-oii;(64)63455-4545;546.546.544-54;455654654;null;1
+FGFDHG;Telefone:(  )     -    ;CPF:534.453.453-44;HGJDFJGFT;null;1
+5654863;Telefone:(  )     -    ;CPF:   .   .   -  ;TRTE;null;1
+TYHDHXTJ;Telefone:(54)34536-5463;CPF:   .   .   -  ;GFRHD;null;1
+TYHDHXTJ;Telefone:(54)34536-5463;CPF:   .   .   -  ;GSDFG;null;1
+oii;Telefone:(64)63455-4545;CPF:546.546.544-54;455654654;null;1
 natalo;(45)54445-6454;445.456.456-45;hkcgk;null;1
-dalan;(99)99999-9999;999.999.999-99;dalan;QX2KJGT6bdDjudHVRPbXpQ==;3
+dalan;(00)00000-0000;000.000.000-00;dalan;QX2KJGT6bdDjudHVRPbXpQ==;1
+dalas;(00)00000-0000;000.000.000-00;dalas;QX2KJGT6bdDjudHVRPbXpQ==;3
+darlan;(00)00000-0000;000.000.000-00;darlan;QX2KJGT6bdDjudHVRPbXpQ==;1

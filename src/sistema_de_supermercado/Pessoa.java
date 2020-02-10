@@ -1,5 +1,9 @@
 package sistema_de_supermercado;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,7 +71,7 @@ public class Pessoa {
     public int getTipoUser(){
         return this.tipoUser;
     }    
-    public String Salvar_arq(){
+    public String cadastrarArq(){
         try{                                                   //tenta executar o codigo e indica que possa ocorrer um exceçaõ(erro)
           FileWriter fw= new FileWriter ("Cadastro.txt",true); //Construtor que recebe o obejeto do tipo cadastro.txt,escreve diretamente no arquivo se ele existir e acrescenta .
            PrintWriter pw= new PrintWriter(fw);               //é praticamente a mesma coisa que o filleWriter so que melhor.
@@ -82,6 +86,29 @@ public class Pessoa {
        return "Salvo com sucesso";
     }
     
-    
+    public static String alterarArq(String palavraAntiga, String palavraNova) throws IOException {
+        String arquivo = "Perguntas.txt";
+        String arquivoTmp = "ARQUIVO-tmp";
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(arquivoTmp));
+        BufferedReader reader = new BufferedReader(new FileReader(arquivo));
+
+        String linha;
+        while ((linha = reader.readLine()) != null) {
+            if (linha.contains(palavraAntiga)) {
+                linha = linha.replace(palavraAntiga, palavraNova);
+            }
+            writer.write(linha + ";");
+        }
+        writer.write("\n");
+        
+        writer.close();
+        reader.close();
+
+        new File(arquivo).delete();
+        new File(arquivoTmp).renameTo(new File(arquivo));
+        
+        return "Alterado com sucesso";
+    }
     
 }
