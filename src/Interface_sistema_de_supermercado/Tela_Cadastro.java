@@ -4,6 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
 import Controller.Controle_Cadastro;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
 
@@ -19,6 +24,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     public Tela_Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
+        T1_Cargo.setVisible(false);
+        C1_Cargo.setVisible(false);
     }
 
     /**
@@ -38,6 +45,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         T1_Nome = new javax.swing.JLabel();
         T1_telefone = new javax.swing.JLabel();
         T1_CPF = new javax.swing.JLabel();
+        T1_Cargo = new javax.swing.JLabel();
         T2_login = new javax.swing.JLabel();
         T2_Senha = new javax.swing.JLabel();
         C1_Nome = new javax.swing.JTextField();
@@ -45,10 +53,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         C1_CPF = new javax.swing.JFormattedTextField();
         C2_Login = new javax.swing.JTextField();
         C2_Senha = new javax.swing.JPasswordField();
-        T1_Cargo = new javax.swing.JLabel();
         C1_Cargo = new javax.swing.JTextField();
-        T1_nvl_acesso = new javax.swing.JLabel();
-        CB_NVL_ACESSO = new javax.swing.JComboBox<>();
         Bttn1_Cancelar = new javax.swing.JButton();
         Bttn1_Cadastrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -96,6 +101,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         T1_CPF.setForeground(new java.awt.Color(255, 255, 255));
         T1_CPF.setText("CPF:");
 
+        T1_Cargo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_Cargo.setForeground(new java.awt.Color(255, 255, 255));
+        T1_Cargo.setText("Cargo:");
+
         T2_login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         T2_login.setForeground(new java.awt.Color(255, 255, 255));
         T2_login.setText("Login:");
@@ -115,6 +124,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        C1_telefone.setText("(00)00000-0000");
         C1_telefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 C1_telefoneActionPerformed(evt);
@@ -126,6 +136,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        C1_CPF.setText("000.000.000-00");
         C1_CPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 C1_CPFActionPerformed(evt);
@@ -144,24 +155,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
-        T1_Cargo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        T1_Cargo.setForeground(new java.awt.Color(255, 255, 255));
-        T1_Cargo.setText("Cargo:");
-
         C1_Cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 C1_CargoActionPerformed(evt);
-            }
-        });
-
-        T1_nvl_acesso.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        T1_nvl_acesso.setForeground(new java.awt.Color(255, 255, 255));
-        T1_nvl_acesso.setText("Nível de acesso:");
-
-        CB_NVL_ACESSO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CB_NVL_ACESSO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_NVL_ACESSOActionPerformed(evt);
             }
         });
 
@@ -195,9 +191,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(174, 174, 174))
+                .addGap(39, 39, 39))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,39 +209,38 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(T1_telefone)
                             .addComponent(T1_Nome, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(T1_CPF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(T2_Senha)
-                                .addComponent(T2_login)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(C2_Login, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C1_telefone, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C1_CPF, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C1_Nome, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C2_Senha))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(T1_Cargo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(T1_nvl_acesso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CB_NVL_ACESSO, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(T1_Cargo, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(T1_telefone))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(T1_CPF, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(T2_login, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(T2_Senha, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Bttn1_Cadastrar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Bttn1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)))
+                        .addGap(100, 100, 100))
+                    .addComponent(C2_Login)
+                    .addComponent(C2_Senha)
+                    .addComponent(C1_Nome)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(C1_telefone)
+                            .addComponent(C1_CPF))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -255,28 +250,28 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1_Nome)
-                    .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(C1_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T1_telefone))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(C1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T1_CPF, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(T2_login, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(C2_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(C2_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T2_Senha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(T1_Cargo)
                     .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T1_telefone)
-                    .addComponent(C1_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T1_nvl_acesso)
-                    .addComponent(CB_NVL_ACESSO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T1_CPF)
-                    .addComponent(C1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T2_login)
-                    .addComponent(C2_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T2_Senha)
-                    .addComponent(C2_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Cancelar)
                     .addComponent(Bttn1_Cadastrar))
@@ -298,8 +293,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(T2_Cabeçalho)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(T2_Cabeçalho))
         );
 
         pack();
@@ -326,6 +320,24 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         this.dispose();        //fecha a tela após o click
     }//GEN-LAST:event_Bttn1_CancelarActionPerformed
 
+    public void alteraFuncionario(String funcionario) throws FileNotFoundException{
+        Scanner in = new Scanner(new File("Cadastro.txt"));
+        
+        while (in.hasNextLine()) {
+            String s = in.nextLine();
+            String[] sArray = s.split(";");
+            
+            if(funcionario.equals(sArray[0])){
+                C1_Nome.setText(funcionario);
+                C1_telefone.setText(sArray[1]);
+                C1_CPF.setText(sArray[2]);
+                C2_Login.setText(sArray[3]);
+                C2_Senha.setText(CriptografaSenha.decryptPasswd(sArray[4], CriptografaSenha.SECRET_KEY));
+                C1_Cargo.setText(sArray[5]);
+            }
+        }
+    }
+    
     private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_C1_CargoActionPerformed
@@ -349,10 +361,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private void C1_NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_NomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_C1_NomeActionPerformed
-
-    private void CB_NVL_ACESSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NVL_ACESSOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CB_NVL_ACESSOActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,11 +406,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField C1_telefone;
     private javax.swing.JTextField C2_Login;
     private javax.swing.JPasswordField C2_Senha;
-    private javax.swing.JComboBox<String> CB_NVL_ACESSO;
     private javax.swing.JLabel T1_CPF;
     private javax.swing.JLabel T1_Cargo;
     private javax.swing.JLabel T1_Nome;
-    private javax.swing.JLabel T1_nvl_acesso;
     private javax.swing.JLabel T1_telefone;
     private javax.swing.JLabel T2_Cabeçalho;
     private javax.swing.JLabel T2_Senha;
@@ -414,4 +420,25 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getBttn1_Cadastrar(){
+        return this.Bttn1_Cadastrar;
+    }
+    
+    public javax.swing.JLabel getJLabel1(){
+        return this.jLabel1;
+    }
+    
+    public javax.swing.JLabel getT1_Cargo(){
+        return this.T1_Cargo;
+    }
+    
+    public javax.swing.JTextField getC1_Cargo(){
+        return this.C1_Cargo;
+    }
+    
+    public javax.swing.JPasswordField getC2_Senha(){
+        return this.C2_Senha;
+    }
+    
 }

@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
@@ -183,11 +185,12 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_C1_SENHAActionPerformed
 
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
-        Tela_Cadastro Tela_C = new Tela_Cadastro(); //chama a tela de cadastro
-        Tela_C.setVisible(true);             // serve para mostrar o Jframe na tela
-        Tela_C.setLocationRelativeTo(null);     // tela no centro 
+        Tela_Cadastro Tela_C; 
+        Tela_C = new Tela_Cadastro();
+        Tela_C.setVisible(true);
+        Tela_C.setLocationRelativeTo(null);
         Tela_C.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();        //fecha a tela após o click 
+        this.dispose();        
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void C1_LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_LOGINActionPerformed
@@ -236,10 +239,10 @@ public class Tela_Login extends javax.swing.JFrame {
                     break;
                 case TipoUsuario.USUARIO_CHEFE:   
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Tela_Interna_Chefe Tela_IC = new Tela_Interna_Chefe(); //chama a tela interna Chefe
-                    Tela_IC.setVisible(true);                  // serve para mostrar o Jframe na tela
-                    Tela_IC.setLocationRelativeTo(null);       // tela no centro 
-                    Tela_IC.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    Tela_Cadastro Tela_C = new Tela_Cadastro(); //chama a tela interna Chefe
+                    Tela_C.setVisible(true);                  // serve para mostrar o Jframe na tela
+                    Tela_C.setLocationRelativeTo(null);       // tela no centro 
+                    Tela_C.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();
                     break;
                 default:
