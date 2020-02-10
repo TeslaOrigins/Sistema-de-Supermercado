@@ -209,7 +209,6 @@ public class Tela_Login extends javax.swing.JFrame {
                 String s = in.nextLine();
                 String[] sArray = s.split(";");
                 String tipoUser = sArray[5];
-                System.out.println(sArray[0]);
                 
                 if (login.equals(sArray[3]) && senha.equals(sArray[4])) {
                     if(tipoUser.equals(TipoUsuario.usuarioFuncionarioToString())){

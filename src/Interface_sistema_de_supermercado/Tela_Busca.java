@@ -144,8 +144,7 @@ public class Tela_Busca extends javax.swing.JFrame {
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         JOptionPane.showMessageDialog(rootPane, jList1.getSelectedValue(), "Funcionario Selecionado", JOptionPane.INFORMATION_MESSAGE);
-        Tela_Cadastro Tela_C;
-        Tela_C = new Tela_Cadastro();
+        Tela_Cadastro Tela_C = new Tela_Cadastro();
         //Tela_C.getBttn1_Cadastrar().setText("Alterar");
         Tela_C.getBttn1_Cadastrar().setVisible(false);
         Tela_C.getBttn1_Alterar().setVisible(true);

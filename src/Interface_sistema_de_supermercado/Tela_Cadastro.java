@@ -348,8 +348,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 C2_Login.setText(sArray[3]);
                 C2_Senha.setText(CriptografaSenha.decryptPasswd(sArray[4], CriptografaSenha.SECRET_KEY));
                 C1_Cargo.setText(sArray[5]);
+                loginAlterar = sArray[3];
             }
-        }
+        }        
     }
     
     private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
@@ -387,24 +388,12 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             cadastro.setLogin(C2_Login.getText());
             cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
             cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
+            cadastro.alterarArq(loginAlterar);
             
-            while (in.hasNextLine()) {
-                String s = in.nextLine();
-                String[] sArray = s.split(";");                
-                
-                if(C1_Nome.getText().equals(sArray[0])){
-                    cadastro.alterarArq(sArray[0], C1_Nome.getText());
-                    cadastro.alterarArq(sArray[1], C1_telefone.getText());
-                    cadastro.alterarArq(sArray[2], C1_CPF.getText());
-                    cadastro.alterarArq(sArray[3], C2_Login.getText());
-                    cadastro.alterarArq(sArray[4], String.valueOf(C2_Senha.getPassword()));
-                    cadastro.alterarArq(sArray[4], TipoUsuario.textUsuarioString(C1_Cargo.getText()));
-                }
-                
-            }
             JOptionPane.showMessageDialog(null, "Alterado com sucesso");
         } catch (IOException ex) {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getStackTrace());
         }
     }//GEN-LAST:event_Bttn1_AlterarActionPerformed
 
@@ -467,7 +456,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
-
+    private String loginAlterar;
+            
     public javax.swing.JButton getBttn1_Cadastrar(){
         return this.Bttn1_Cadastrar;
     }
