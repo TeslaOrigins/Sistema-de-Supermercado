@@ -34,7 +34,6 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         initComponents();
         ListaProd = new ArrayList();
         ManipularInterface("Navegar");
-
     }
     
     /**

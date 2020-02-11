@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
@@ -29,6 +31,7 @@ public class Tela_Login extends javax.swing.JFrame {
     public Tela_Login() {
         initComponents();
         this.setLocationRelativeTo(null); //tela no centro
+        setResizable(false); //bloqueia o maximizar 
 
     }
 
@@ -76,6 +79,9 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Bttn1_Entrar.setBackground(new java.awt.Color(51, 51, 51));
+        Bttn1_Entrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Entrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Entrar.setText("Entrar");
         Bttn1_Entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +89,9 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Bttn1_Cadastrar.setBackground(new java.awt.Color(51, 51, 51));
+        Bttn1_Cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cadastrar.setText("Cadastrar Funcionário");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,7 +170,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Entrar)
                     .addComponent(Bttn1_Cadastrar))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,11 +192,12 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_C1_SENHAActionPerformed
 
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
-        Tela_Cadastro Tela_C = new Tela_Cadastro(); //chama a tela de cadastro
-        Tela_C.setVisible(true);             // serve para mostrar o Jframe na tela
-        Tela_C.setLocationRelativeTo(null);     // tela no centro 
+        Tela_Cadastro Tela_C; 
+        Tela_C = new Tela_Cadastro();
+        Tela_C.setVisible(true);
+        Tela_C.setLocationRelativeTo(null);
         Tela_C.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();        //fecha a tela após o click 
+        this.dispose();        
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void C1_LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_LOGINActionPerformed
@@ -209,16 +219,16 @@ public class Tela_Login extends javax.swing.JFrame {
                 
                 if (login.equals(sArray[3]) && senha.equals(sArray[4])) {
                     if(tipoUser.equals(TipoUsuario.usuarioFuncionarioToString())){
-                        tipo = TipoUsuario.USUARIO_FUNCIONARIO;
+                        tipo = TipoUsuario.USUARIO_FUNCIONARIO_INT;
                     } else if(tipoUser.equals(TipoUsuario.usuarioGerenteToString())){    
-                        tipo = TipoUsuario.USUARIO_GERENTE;
+                        tipo = TipoUsuario.USUARIO_GERENTE_INT;
                     } else if(tipoUser.equals(TipoUsuario.usuarioChefeToString())){
-                        tipo = TipoUsuario.USUARIO_CHEFE;
+                        tipo = TipoUsuario.USUARIO_CHEFE_INT;
                     }               
                 }
             }
             switch(tipo){
-                case TipoUsuario.USUARIO_FUNCIONARIO:
+                case TipoUsuario.USUARIO_FUNCIONARIO_INT:
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
                     Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
@@ -226,7 +236,7 @@ public class Tela_Login extends javax.swing.JFrame {
                     Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();                           //fecha a tela após o click 
                     break;
-                case TipoUsuario.USUARIO_GERENTE:
+                case TipoUsuario.USUARIO_GERENTE_INT:
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                     Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
                     Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
@@ -234,16 +244,16 @@ public class Tela_Login extends javax.swing.JFrame {
                     Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();
                     break;
-                case TipoUsuario.USUARIO_CHEFE:   
+                case TipoUsuario.USUARIO_CHEFE_INT:   
                     JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Tela_Interna_Chefe Tela_IC = new Tela_Interna_Chefe(); //chama a tela interna Chefe
-                    Tela_IC.setVisible(true);                  // serve para mostrar o Jframe na tela
-                    Tela_IC.setLocationRelativeTo(null);       // tela no centro 
-                    Tela_IC.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    Tela_Busca Tela_B = new Tela_Busca(); //chama a tela interna Chefe
+                    Tela_B.setVisible(true);                  // serve para mostrar o Jframe na tela
+                    Tela_B.setLocationRelativeTo(null);       // tela no centro 
+                    Tela_B.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     this.dispose();
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "erro", JOptionPane.ERROR_MESSAGE);
             }
 
             in.close();
