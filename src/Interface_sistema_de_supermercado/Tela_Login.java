@@ -31,6 +31,7 @@ public class Tela_Login extends javax.swing.JFrame {
     public Tela_Login() {
         initComponents();
         this.setLocationRelativeTo(null); //tela no centro
+        setResizable(false); //bloqueia o maximizar 
 
     }
 
@@ -78,6 +79,9 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Bttn1_Entrar.setBackground(new java.awt.Color(51, 51, 51));
+        Bttn1_Entrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Entrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Entrar.setText("Entrar");
         Bttn1_Entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +89,9 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Bttn1_Cadastrar.setBackground(new java.awt.Color(51, 51, 51));
+        Bttn1_Cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cadastrar.setText("Cadastrar Funcionário");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +170,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Entrar)
                     .addComponent(Bttn1_Cadastrar))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -246,7 +253,7 @@ public class Tela_Login extends javax.swing.JFrame {
                     this.dispose();
                     break;
                 default:
-                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "erro", JOptionPane.ERROR_MESSAGE);
             }
 
             in.close();

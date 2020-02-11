@@ -1,5 +1,5 @@
 package Interface_sistema_de_supermercado;
-
+import Controller.Validacao_CPF;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
@@ -28,6 +28,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         T1_Cargo.setVisible(false);
         C1_Cargo.setVisible(false);
         Bttn1_Alterar.setVisible(false);
+        setResizable(false); //bloqueia o maximizar 
+
     }
 
     /**
@@ -164,8 +166,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
-        Bttn1_Cancelar.setBackground(new java.awt.Color(102, 0, 0));
+        Bttn1_Cancelar.setBackground(new java.awt.Color(192, 57, 43));
         Bttn1_Cancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cancelar.setText("Cancelar");
         Bttn1_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +178,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         Bttn1_Cadastrar.setBackground(new java.awt.Color(0, 102, 0));
         Bttn1_Cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cadastrar.setText("Cadastrar");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,6 +230,20 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(T1_Nome, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(T1_Cargo, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(T2_Senha)
+                                    .addComponent(T2_login)
+                                    .addComponent(T1_CPF))
+                                .addGap(5, 5, 5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(C1_telefone, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(C1_CPF, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(C1_Nome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(C2_Senha)
+                            .addComponent(C2_Login))
+                        .addGap(239, 239, 239))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(T1_telefone))
@@ -255,6 +273,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                             .addComponent(C1_CPF))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+                        .addGap(30, 30, 30))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,23 +283,23 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1_Nome)
                     .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(C1_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T1_telefone))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T1_telefone)
+                    .addComponent(C1_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(C1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T1_CPF, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(T1_CPF))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T2_login)
+                    .addComponent(C2_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(T2_login, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(C2_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(C2_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T2_Senha))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(C2_Senha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T2_Senha, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(T1_Cargo)
                     .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -312,7 +331,16 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   private void limpar_Campos(){
+       C1_Nome.setText(null);
+       C1_telefone.setText(null);
+       C1_CPF.setText(null);
+       C2_Login.setText(null);
+       C2_Senha.setText(null);
+       
+   }
+           
+     
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
         Pessoa cadastro = new Pessoa();
 
@@ -323,7 +351,23 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
         cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
 
-        JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
+        /*    Validacao_CPF pf= new  Validacao_CPF(C1_CPF,true);
+            if(pf.isCPF()){
+            C1_CPF.setText(pf.getCPF(true));
+        
+        }else{
+            JOptionPane.showMessageDialog(rootPane,"CPF INVÁLIDO");}
+            
+            */
+            
+        if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()){
+                JOptionPane.showMessageDialog (null,"Por favor preencha todos os campos","erro",JOptionPane.ERROR_MESSAGE); //validação de campos
+                
+        }else
+        JOptionPane.showMessageDialog(null, cadastro.Salvar_arq());
+        limpar_Campos(); // método que limpa todos os campos após click cadastro
+     
+            
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
@@ -437,13 +481,11 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JButton Bttn1_Cadastrar;
     private javax.swing.JButton Bttn1_Cancelar;
     private javax.swing.JFormattedTextField C1_CPF;
-    private javax.swing.JTextField C1_Cargo;
     private javax.swing.JTextField C1_Nome;
     private javax.swing.JFormattedTextField C1_telefone;
     private javax.swing.JTextField C2_Login;
     private javax.swing.JPasswordField C2_Senha;
     private javax.swing.JLabel T1_CPF;
-    private javax.swing.JLabel T1_Cargo;
     private javax.swing.JLabel T1_Nome;
     private javax.swing.JLabel T1_telefone;
     private javax.swing.JLabel T2_Cabeçalho;
