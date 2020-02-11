@@ -16,7 +16,9 @@ public class Tela_Interna_Chefe extends javax.swing.JFrame {
      */
     public Tela_Interna_Chefe() {
         initComponents();
-        this.setLocationRelativeTo(null); //ela no centro
+        this.setLocationRelativeTo(null); //Tela no centro
+        setResizable(false); // bloqueia o maximizar 
+
     }
 
     /**

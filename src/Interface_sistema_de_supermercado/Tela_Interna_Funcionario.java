@@ -17,6 +17,8 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     public Tela_Interna_Funcionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null); //Tela no centro
+        setResizable(false); // bloqueia o maximizar 
     }
     
     /**
