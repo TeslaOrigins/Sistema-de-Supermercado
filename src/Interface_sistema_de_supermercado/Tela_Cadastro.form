@@ -111,6 +111,7 @@
                                       <Component id="T2_Senha" min="-2" max="-2" attributes="0"/>
                                       <Component id="T2_login" min="-2" max="-2" attributes="0"/>
                                       <Component id="T1_CPF" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="T1_Cargo" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               </Group>
@@ -122,11 +123,14 @@
                               <Component id="C1_Nome" alignment="0" max="32767" attributes="0"/>
                               <Component id="C2_Senha" max="32767" attributes="0"/>
                               <Component id="C2_Login" max="32767" attributes="0"/>
+                              <Component id="C1_Cargo" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="Bttn1_Alterar" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="Bttn1_Cadastrar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="Bttn1_Cancelar" min="-2" pref="98" max="-2" attributes="0"/>
@@ -155,20 +159,26 @@
                       <Component id="C1_CPF" min="-2" max="-2" attributes="0"/>
                       <Component id="T1_CPF" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="T2_login" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="C2_Login" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="T2_login" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="C2_Senha" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="T2_Senha" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="T2_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="C2_Senha" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="T1_Cargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="C1_Cargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Bttn1_Cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Bttn1_Cadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Bttn1_Alterar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
@@ -344,6 +354,27 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="Bttn1_Alterar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Alterar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Bttn1_AlterarActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="T1_Cargo">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f0" green="f0" red="f0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cargo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="C1_Cargo">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C1_CargoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
