@@ -97,7 +97,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Bttn1_Alterar = new javax.swing.JButton();
         T1_Cargo = new javax.swing.JLabel();
-        C1_Cargo = new javax.swing.JTextField();
+        C1_Cargo = new javax.swing.JComboBox<>();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -240,9 +240,11 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
+        T1_Cargo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         T1_Cargo.setForeground(new java.awt.Color(240, 240, 240));
-        T1_Cargo.setText("Cargo:");
+        T1_Cargo.setText("Selecione seu cargo:");
 
+        C1_Cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1-Chefe", "2-Gerente", "3-Funcionário" }));
         C1_Cargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 C1_CargoActionPerformed(evt);
@@ -260,23 +262,28 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(T1_telefone)
-                            .addComponent(T1_Nome, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(T2_Senha)
-                                    .addComponent(T2_login)
-                                    .addComponent(T1_CPF)
-                                    .addComponent(T1_Cargo))
-                                .addGap(5, 5, 5)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(T1_Nome, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(T2_Senha)
+                                            .addComponent(T2_login)
+                                            .addComponent(T1_CPF))
+                                        .addGap(5, 5, 5)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(C1_telefone, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C1_CPF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C1_Nome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C2_Senha)
-                            .addComponent(C2_Login)
-                            .addComponent(C1_Cargo))
-                        .addGap(239, 239, 239))
+                            .addComponent(C2_Login))
+                        .addGap(18, 18, 18)
+                        .addComponent(T1_Cargo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(Bttn1_Alterar)
@@ -293,7 +300,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1_Nome)
-                    .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T1_Cargo)
+                    .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1_telefone)
@@ -310,11 +319,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T2_Senha)
                     .addComponent(C2_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T1_Cargo)
-                    .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Cancelar)
                     .addComponent(Bttn1_Cadastrar)
@@ -337,8 +342,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(T2_Cabeçalho)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(T2_Cabeçalho))
         );
 
         pack();
@@ -409,10 +413,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_C1_NomeActionPerformed
 
-    private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_C1_CargoActionPerformed
-
     private void Bttn1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_AlterarActionPerformed
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));
@@ -431,6 +431,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_Bttn1_AlterarActionPerformed
+
+    private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C1_CargoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -472,7 +476,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JButton Bttn1_Cadastrar;
     private javax.swing.JButton Bttn1_Cancelar;
     private javax.swing.JFormattedTextField C1_CPF;
-    private javax.swing.JTextField C1_Cargo;
+    private javax.swing.JComboBox<String> C1_Cargo;
     private javax.swing.JTextField C1_Nome;
     private javax.swing.JFormattedTextField C1_telefone;
     private javax.swing.JTextField C2_Login;
