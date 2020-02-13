@@ -1,4 +1,5 @@
 package Interface_sistema_de_supermercado;
+
 import Controller.Validacao_CPF;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -12,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
+import sistema_de_supermercado.ValidarCPF;
 
 /**
  *
@@ -28,15 +30,15 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         setResizable(false); //bloqueia o maximizar 
 
     }
-    
-    public void alteraFuncionario(String funcionario) throws FileNotFoundException{
+
+    public void alteraFuncionario(String funcionario) throws FileNotFoundException {
         Scanner in = new Scanner(new File("Cadastro.txt"));
-        
+
         while (in.hasNextLine()) {
             String s = in.nextLine();
             String[] sArray = s.split(";");
-            
-            if(funcionario.equals(sArray[0])){
+
+            if (funcionario.equals(sArray[0])) {
                 C1_Nome.setText(funcionario);
                 C1_telefone.setText(sArray[1]);
                 C1_CPF.setText(sArray[2]);
@@ -45,7 +47,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 C1_Cargo.setText(sArray[5]);
                 loginAlterar = sArray[3];
             }
-        }        
+        }
     }
 
 //    private void Bttn1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {                                              
@@ -66,7 +68,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 //            Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //    } 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -240,6 +241,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
+        T1_Cargo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         T1_Cargo.setForeground(new java.awt.Color(240, 240, 240));
         T1_Cargo.setText("Cargo:");
 
@@ -343,16 +345,16 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   private void limpar_Campos(){
-       C1_Nome.setText(null);
-       C1_telefone.setText(null);
-       C1_CPF.setText(null);
-       C2_Login.setText(null);
-       C2_Senha.setText(null);
-       
-   }
-           
-     
+   private void limpar_Campos() {
+        C1_Nome.setText(null);
+        C1_telefone.setText(null);
+        C1_CPF.setText(null);
+        C2_Login.setText(null);
+        C2_Senha.setText(null);
+
+    }
+
+
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
 
         Pessoa cadastro = new Pessoa();
@@ -362,23 +364,21 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setLogin(C2_Login.getText());
         cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
         cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
-      /*    Validacao_CPF pf= new  Validacao_CPF(C1_CPF,true);
-          if(pf.isCPF()){
-        C1_CPF.setText(pf.getCPF(true));
-    
-    }else{
-          JOptionPane.showMessageDialog(rootPane,"CPF INVÁLIDO");}
+        String cpf = cadastro.getCpf();
         
-        */
-        
-     if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()){
-            JOptionPane.showMessageDialog (null,"Por favor preencha todos os campos","erro",JOptionPane.ERROR_MESSAGE); //validação de campos
-            
-        }else
-        JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
-     limpar_Campos(); // método que limpa todos os campos após click cadastro
-     
-            
+        ValidarCPF pf = new ValidarCPF(cpf);
+        if(pf.isCPF()){
+            if (C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos", "erro", JOptionPane.ERROR_MESSAGE); //validação de campos
+
+            } else {
+                JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
+            }
+            limpar_Campos(); // método que limpa todos os campos após click cadastro
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "CPF inválido");
+        }
+
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
@@ -417,7 +417,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));
             Pessoa cadastro = new Pessoa();
-            
+
             cadastro.setNome(C1_Nome.getText());
             cadastro.setCel(C1_telefone.getText());
             cadastro.setCpf(C1_CPF.getText());
@@ -425,7 +425,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
             cadastro.setTipoUser(TipoUsuario.textUsuarioInt(C1_Cargo.getText()));
             cadastro.alterarArq(loginAlterar);
-            
+
             JOptionPane.showMessageDialog(null, "Alterado com sucesso");
         } catch (IOException ex) {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -492,28 +492,28 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
     private String loginAlterar;
-            
-    public javax.swing.JButton getBttn1_Cadastrar(){
+
+    public javax.swing.JButton getBttn1_Cadastrar() {
         return this.Bttn1_Cadastrar;
     }
-    
-    public javax.swing.JButton getBttn1_Alterar(){
+
+    public javax.swing.JButton getBttn1_Alterar() {
         return this.Bttn1_Alterar;
     }
-    
-    public javax.swing.JLabel getJLabel1(){
+
+    public javax.swing.JLabel getJLabel1() {
         return this.jLabel1;
     }
-    
-    public javax.swing.JLabel getT1_Cargo(){
+
+    public javax.swing.JLabel getT1_Cargo() {
         return this.T1_Cargo;
     }
-    
-    public javax.swing.JTextField getC1_Cargo(){
+
+    public javax.swing.JTextField getC1_Cargo() {
         return this.C1_Cargo;
     }
-    
-    public javax.swing.JPasswordField getC2_Senha(){
+
+    public javax.swing.JPasswordField getC2_Senha() {
         return this.C2_Senha;
     }
 }
