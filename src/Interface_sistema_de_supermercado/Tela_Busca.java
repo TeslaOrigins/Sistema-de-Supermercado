@@ -32,13 +32,6 @@ public class Tela_Busca extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //ela no centro
     }
     
-    
-    /**
-     * Função que coleta os funcionarios do arquivo e os reúne numa lista
-     * 
-     * @return ArrayList de funcionarios
-     * @throws FileNotFoundException 
-     */
     public ArrayList getFuncionarios() throws FileNotFoundException{
         ArrayList func = new ArrayList();
         Scanner in = new Scanner(new File("Cadastro.txt"));
@@ -52,11 +45,6 @@ public class Tela_Busca extends javax.swing.JFrame {
         return func;
     }
     
-    /**
-     * Método que recebe a lista de funcionarios e os adiciona no jList da tela
-     * 
-     * @throws FileNotFoundException 
-     */
     private void bindData() throws FileNotFoundException{
         getFuncionarios().stream().forEach((func) -> {
             defaultListModel.addElement(func);
@@ -65,14 +53,6 @@ public class Tela_Busca extends javax.swing.JFrame {
         jList1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     
-    
-    /**
-     * Método que contém o algoritmo de busca usado para filtrar resultados na 
-     * jList da tela
-     * 
-     * @param parametro
-     * @throws FileNotFoundException 
-     */
     private void searchFilter(String parametro) throws FileNotFoundException{
         DefaultListModel itensFiltrados = new DefaultListModel();
         ArrayList funcs = getFuncionarios();
@@ -163,8 +143,9 @@ public class Tela_Busca extends javax.swing.JFrame {
     }//GEN-LAST:event_C2_identificadorActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-        JOptionPane.showMessageDialog(rootPane, jList1.getSelectedValue() + " foi selecionado", "Funcionario Selecionado", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(rootPane, jList1.getSelectedValue(), "Funcionario Selecionado", JOptionPane.INFORMATION_MESSAGE);
         Tela_Cadastro Tela_C = new Tela_Cadastro();
+        //Tela_C.getBttn1_Cadastrar().setText("Alterar");
         Tela_C.getBttn1_Cadastrar().setVisible(false);
         Tela_C.getBttn1_Alterar().setVisible(true);
         Tela_C.getJLabel1().setText("ALTERAR FUNCIONÁRIOS");
