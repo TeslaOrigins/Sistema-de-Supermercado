@@ -27,9 +27,19 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
         setResizable(false); //bloqueia o maximizar 
+        this.C1_Cargo.setVisible(false);
+        this.T1_Cargo.setVisible(false);
+        this.Bttn1_Alterar.setVisible(false);
 
     }
     
+    /**
+     * Método utilizado para alterar os dados do funcionario, que estão salvos 
+     * no arquivo
+     * 
+     * @param funcionario
+     * @throws FileNotFoundException 
+     */
     public void alteraFuncionario(String funcionario) throws FileNotFoundException{
         Scanner in = new Scanner(new File("Cadastro.txt"));
         
@@ -48,25 +58,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         }        
     }
-
-//    private void Bttn1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {                                              
-//        try {
-//            Scanner in = new Scanner(new File("Cadastro.txt"));
-//            Pessoa cadastro = new Pessoa();
-//            
-//            cadastro.setNome(C1_Nome.getText());
-//            cadastro.setCel(C1_telefone.getText());
-//            cadastro.setCpf(C1_CPF.getText());
-//            cadastro.setLogin(C2_Login.getText());
-//            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
-//            cadastro.setTipoUser(TipoUsuario.textUsuarioInt(C1_Cargo.getText()));
-//            cadastro.alterarArq(loginAlterar);
-//            
-//            JOptionPane.showMessageDialog(null, "Alterado com sucesso");
-//        } catch (IOException ex) {
-//            Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    } 
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -350,8 +341,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
        C1_telefone.setText(null);
        C1_CPF.setText(null);
        C2_Login.setText(null);
-       C2_Senha.setText(null);
-       
+       C2_Senha.setText(null);       
    }
            
      
@@ -364,13 +354,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setLogin(C2_Login.getText());
         cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
         cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
-   
-     if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()){
             JOptionPane.showMessageDialog (null,"Por favor preencha todos os campos","erro",JOptionPane.ERROR_MESSAGE); //validação de campos
-            
-        }else
+        }
         JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
-     limpar_Campos(); // método que limpa todos os campos após click cadastro
+        limpar_Campos(); // método que limpa todos os campos após click cadastro
      
             
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
