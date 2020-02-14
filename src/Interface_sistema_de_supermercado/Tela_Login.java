@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
@@ -29,6 +31,7 @@ public class Tela_Login extends javax.swing.JFrame {
     public Tela_Login() {
         initComponents();
         this.setLocationRelativeTo(null); //tela no centro
+        setResizable(false); //bloqueia o maximizar 
 
     }
 
@@ -43,7 +46,6 @@ public class Tela_Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         T1_Login = new javax.swing.JLabel();
-        T1_SENHA = new javax.swing.JLabel();
         C1_LOGIN = new javax.swing.JTextField();
         C1_SENHA = new javax.swing.JPasswordField();
         Bttn1_Entrar = new javax.swing.JButton();
@@ -51,14 +53,15 @@ public class Tela_Login extends javax.swing.JFrame {
         T1_N_SuperM = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(44, 62, 80));
 
-        T1_Login.setText("LOGIN:");
-
-        T1_SENHA.setText("SENHA:");
+        T1_Login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_Login.setForeground(new java.awt.Color(255, 255, 255));
 
         C1_LOGIN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +75,9 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Bttn1_Entrar.setBackground(new java.awt.Color(51, 51, 51));
+        Bttn1_Entrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Entrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Entrar.setText("Entrar");
         Bttn1_Entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +85,9 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        Bttn1_Cadastrar.setBackground(new java.awt.Color(51, 51, 51));
+        Bttn1_Cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cadastrar.setText("Cadastrar Funcionário");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,12 +95,14 @@ public class Tela_Login extends javax.swing.JFrame {
             }
         });
 
+        T1_N_SuperM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        T1_N_SuperM.setForeground(new java.awt.Color(255, 255, 255));
         T1_N_SuperM.setText("SUPERMERCADO  DO TEAM STI");
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(248, 148, 6));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("AUTENTICAÇÃO DE USUÁRIO");
 
@@ -100,91 +111,103 @@ public class Tela_Login extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(83, 83, 83)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel1)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon_login.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon_password (2).png"))); // NOI18N
+        jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(T1_SENHA)
-                    .addComponent(T1_Login))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Bttn1_Entrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Bttn1_Cadastrar))
-                    .addComponent(C1_LOGIN)
-                    .addComponent(C1_SENHA))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Bttn1_Entrar)
+                                .addGap(18, 18, 18)
+                                .addComponent(Bttn1_Cadastrar))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(274, 274, 274)
+                                .addComponent(T1_Login))
+                            .addComponent(C1_SENHA)
+                            .addComponent(C1_LOGIN))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
-                .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(C1_LOGIN)
-                    .addComponent(T1_Login, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(T1_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(C1_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(5, 5, 5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(C1_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T1_SENHA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Entrar)
                     .addComponent(Bttn1_Cadastrar))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void C1_SENHAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_SENHAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_C1_SENHAActionPerformed
-
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
-        Tela_Cadastro Tela_C = new Tela_Cadastro(); //chama a tela de cadastro
-        Tela_C.setVisible(true);             // serve para mostrar o Jframe na tela
-        Tela_C.setLocationRelativeTo(null);     // tela no centro 
+        Tela_Cadastro Tela_C;
+        Tela_C = new Tela_Cadastro();
+        Tela_C.setVisible(true);
+        Tela_C.setLocationRelativeTo(null);
         Tela_C.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();        //fecha a tela após o click 
+        this.dispose();
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
-
-    private void C1_LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_LOGINActionPerformed
-    }//GEN-LAST:event_C1_LOGINActionPerformed
 
     private void Bttn1_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_EntrarActionPerformed
         File cadastro = new File("Cadastro.txt");
@@ -192,61 +215,69 @@ public class Tela_Login extends javax.swing.JFrame {
         boolean achou = false;
         String login = C1_LOGIN.getText().trim();
         String senha = CriptografaSenha.encryptPasswd(String.valueOf(C1_SENHA.getPassword()), CriptografaSenha.SECRET_KEY); //usa valueOf pq o campo é senha é um char, e queremos o text.
-        
+
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));
             while (in.hasNextLine()) {
                 String s = in.nextLine();
                 String[] sArray = s.split(";");
                 String tipoUser = sArray[5];
-                
+
                 if (login.equals(sArray[3]) && senha.equals(sArray[4])) {
                     if(tipoUser.equals(TipoUsuario.usuarioFuncionarioToString())){
-                        tipo = TipoUsuario.USUARIO_FUNCIONARIO;
-                    } else if(tipoUser.equals(TipoUsuario.usuarioGerenteToString())){    
-                        tipo = TipoUsuario.USUARIO_GERENTE;
+                        tipo = TipoUsuario.USUARIO_FUNCIONARIO_INT;
+                    } else if(tipoUser.equals(TipoUsuario.usuarioGerenteToString())){
+                        tipo = TipoUsuario.USUARIO_GERENTE_INT;
                     } else if(tipoUser.equals(TipoUsuario.usuarioChefeToString())){
-                        tipo = TipoUsuario.USUARIO_CHEFE;
-                    }               
+                        tipo = TipoUsuario.USUARIO_CHEFE_INT;
+                    }
                 }
             }
             switch(tipo){
-                case TipoUsuario.USUARIO_FUNCIONARIO:
-                    JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
-                    Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
-                    Tela_IF.setLocationRelativeTo(null);       // tela no centro 
-                    Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    this.dispose();                           //fecha a tela após o click 
-                    break;
-                case TipoUsuario.USUARIO_GERENTE:
-                    JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
-                    Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
-                    Tela_IG.setLocationRelativeTo(null);       // tela no centro 
-                    Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    this.dispose();
-                    break;
-                case TipoUsuario.USUARIO_CHEFE:   
-                    JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    Tela_Interna_Chefe Tela_IC = new Tela_Interna_Chefe(); //chama a tela interna Chefe
-                    Tela_IC.setVisible(true);                  // serve para mostrar o Jframe na tela
-                    Tela_IC.setLocationRelativeTo(null);       // tela no centro 
-                    Tela_IC.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    this.dispose();
-                    break;
+                case TipoUsuario.USUARIO_FUNCIONARIO_INT:
+                JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
+                Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_IF.setLocationRelativeTo(null);       // tela no centro
+                Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                this.dispose();                           //fecha a tela após o click
+                break;
+                case TipoUsuario.USUARIO_GERENTE_INT:
+                JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
+                Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_IG.setLocationRelativeTo(null);       // tela no centro
+                Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                this.dispose();
+                break;
+                case TipoUsuario.USUARIO_CHEFE_INT:
+                JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                Tela_Busca Tela_B = new Tela_Busca(); //chama a tela interna Chefe
+                Tela_B.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_B.setLocationRelativeTo(null);       // tela no centro
+                Tela_B.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                this.dispose();
+                break;
                 default:
-                    JOptionPane.showMessageDialog(null, "senha/login incorreto", "error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "senha/login incorreto", "erro", JOptionPane.ERROR_MESSAGE);
             }
 
             in.close();
 
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null,
-                    "User Database Not Found", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+                "User Database Not Found", "Error",
+                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_Bttn1_EntrarActionPerformed
+
+    private void C1_SENHAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_SENHAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C1_SENHAActionPerformed
+
+    private void C1_LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_LOGINActionPerformed
+
+    }//GEN-LAST:event_C1_LOGINActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,8 +322,9 @@ public class Tela_Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField C1_SENHA;
     private javax.swing.JLabel T1_Login;
     private javax.swing.JLabel T1_N_SuperM;
-    private javax.swing.JLabel T1_SENHA;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables

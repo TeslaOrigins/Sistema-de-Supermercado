@@ -1,15 +1,21 @@
 package Interface_sistema_de_supermercado;
-
+import Controller.Validacao_CPF;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
 import Controller.Controle_Cadastro;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sistema_de_supermercado.CriptografaSenha;
 import sistema_de_supermercado.TipoUsuario;
 
 /**
  *
- * @author Natalo Santos
+ * @author Natalo Santos and friends
  */
 public class Tela_Cadastro extends javax.swing.JFrame {
 
@@ -19,8 +25,39 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     public Tela_Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
-    }
+        setResizable(false); //bloqueia o maximizar 
+        this.C1_Cargo.setVisible(false);
+        this.T1_Cargo.setVisible(false);
+        this.Bttn1_Alterar.setVisible(false);
 
+    }
+    
+    /**
+     * Método utilizado para alterar os dados do funcionario, que estão salvos 
+     * no arquivo
+     * 
+     * @param funcionario
+     * @throws FileNotFoundException 
+     */
+    public void alteraFuncionario(String funcionario) throws FileNotFoundException{
+        Scanner in = new Scanner(new File("Cadastro.txt"));
+        
+        while (in.hasNextLine()) {
+            String s = in.nextLine();
+            String[] sArray = s.split(";");
+            
+            if(funcionario.equals(sArray[0])){
+                C1_Nome.setText(funcionario);
+                C1_telefone.setText(sArray[1]);
+                C1_CPF.setText(sArray[2]);
+                C2_Login.setText(sArray[3]);
+                C2_Senha.setText(CriptografaSenha.decryptPasswd(sArray[4], CriptografaSenha.SECRET_KEY));
+                C1_Cargo.setText(sArray[5]);
+                loginAlterar = sArray[3];
+            }
+        }        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,14 +82,13 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         C1_CPF = new javax.swing.JFormattedTextField();
         C2_Login = new javax.swing.JTextField();
         C2_Senha = new javax.swing.JPasswordField();
-        T1_Cargo = new javax.swing.JLabel();
-        C1_Cargo = new javax.swing.JTextField();
-        T1_nvl_acesso = new javax.swing.JLabel();
-        CB_NVL_ACESSO = new javax.swing.JComboBox<>();
         Bttn1_Cancelar = new javax.swing.JButton();
         Bttn1_Cadastrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        Bttn1_Alterar = new javax.swing.JButton();
+        T1_Cargo = new javax.swing.JLabel();
+        C1_Cargo = new javax.swing.JTextField();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -82,16 +118,26 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(44, 62, 80));
 
+        T1_Nome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_Nome.setForeground(new java.awt.Color(255, 255, 255));
         T1_Nome.setText("Nome:");
 
+        T1_telefone.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_telefone.setForeground(new java.awt.Color(255, 255, 255));
         T1_telefone.setText("Telefone:");
 
+        T1_CPF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T1_CPF.setForeground(new java.awt.Color(255, 255, 255));
         T1_CPF.setText("CPF:");
 
+        T2_login.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T2_login.setForeground(new java.awt.Color(255, 255, 255));
         T2_login.setText("Login:");
 
+        T2_Senha.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        T2_Senha.setForeground(new java.awt.Color(255, 255, 255));
         T2_Senha.setText("Senha:");
 
         C1_Nome.addActionListener(new java.awt.event.ActionListener() {
@@ -134,25 +180,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
-        T1_Cargo.setText("Cargo:");
-
-        C1_Cargo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                C1_CargoActionPerformed(evt);
-            }
-        });
-
-        T1_nvl_acesso.setText("Nível de acesso:");
-
-        CB_NVL_ACESSO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CB_NVL_ACESSO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CB_NVL_ACESSOActionPerformed(evt);
-            }
-        });
-
-        Bttn1_Cancelar.setBackground(new java.awt.Color(102, 0, 0));
+        Bttn1_Cancelar.setBackground(new java.awt.Color(192, 57, 43));
         Bttn1_Cancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cancelar.setText("Cancelar");
         Bttn1_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +192,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         Bttn1_Cadastrar.setBackground(new java.awt.Color(0, 102, 0));
         Bttn1_Cadastrar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Cadastrar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cadastrar.setText("Cadastrar");
         Bttn1_Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,10 +200,10 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             }
         });
 
-        jPanel5.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel5.setBackground(new java.awt.Color(248, 148, 6));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Monospaced", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("CADASTRO FUNCIONÁRIOS");
 
@@ -181,17 +212,33 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(224, Short.MAX_VALUE)
+                .addContainerGap(183, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(234, 234, 234))
+                .addGap(174, 174, 174))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        Bttn1_Alterar.setText("Alterar");
+        Bttn1_Alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn1_AlterarActionPerformed(evt);
+            }
+        });
+
+        T1_Cargo.setForeground(new java.awt.Color(240, 240, 240));
+        T1_Cargo.setText("Cargo:");
+
+        C1_Cargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                C1_CargoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -205,34 +252,30 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(T1_telefone)
                             .addComponent(T1_Nome, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(T1_CPF, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(T2_Senha)
-                                .addComponent(T2_login)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(T2_Senha)
+                                    .addComponent(T2_login)
+                                    .addComponent(T1_CPF)
+                                    .addComponent(T1_Cargo))
+                                .addGap(5, 5, 5)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(C2_Login, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C1_telefone, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C1_CPF, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C1_Nome, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C2_Senha))
-                        .addGap(12, 12, 12)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(T1_Cargo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(T1_nvl_acesso)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CB_NVL_ACESSO, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(C2_Senha)
+                            .addComponent(C2_Login)
+                            .addComponent(C1_Cargo))
+                        .addGap(239, 239, 239))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(Bttn1_Alterar)
+                        .addGap(18, 18, 18)
                         .addComponent(Bttn1_Cadastrar)
                         .addGap(18, 18, 18)
                         .addComponent(Bttn1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)))
-                .addContainerGap())
+                        .addGap(30, 30, 30))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,31 +284,32 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1_Nome)
-                    .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T1_Cargo)
-                    .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C1_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1_telefone)
-                    .addComponent(C1_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(T1_nvl_acesso)
-                    .addComponent(CB_NVL_ACESSO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(C1_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(C1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T1_CPF))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T1_CPF)
-                    .addComponent(C1_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(T2_login)
-                    .addComponent(C2_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(C2_Login, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(T2_login))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T2_Senha)
                     .addComponent(C2_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T1_Cargo)
+                    .addComponent(C1_Cargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Cancelar)
-                    .addComponent(Bttn1_Cadastrar))
+                    .addComponent(Bttn1_Cadastrar)
+                    .addComponent(Bttn1_Alterar))
                 .addGap(13, 13, 13))
         );
 
@@ -290,7 +334,15 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   private void limpar_Campos(){
+       C1_Nome.setText(null);
+       C1_telefone.setText(null);
+       C1_CPF.setText(null);
+       C2_Login.setText(null);
+       C2_Senha.setText(null);       
+   }
+           
+     
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
 
         Pessoa cadastro = new Pessoa();
@@ -299,9 +351,23 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         cadastro.setCpf(C1_CPF.getText());
         cadastro.setLogin(C2_Login.getText());
         cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
-        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO);
-
-        JOptionPane.showMessageDialog(null, cadastro.Salvar_arq());
+        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
+      /*    Validacao_CPF pf= new  Validacao_CPF(C1_CPF,true);
+          if(pf.isCPF()){
+        C1_CPF.setText(pf.getCPF(true));
+    
+    }else{
+          JOptionPane.showMessageDialog(rootPane,"CPF INVÁLIDO");}
+        
+        */
+        
+        if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()){
+            JOptionPane.showMessageDialog (null,"Por favor preencha todos os campos","erro",JOptionPane.ERROR_MESSAGE); //validação de campos
+        }
+        JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
+        limpar_Campos(); // método que limpa todos os campos após click cadastro
+     
+            
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
@@ -311,10 +377,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         Tela_L.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.dispose();        //fecha a tela após o click
     }//GEN-LAST:event_Bttn1_CancelarActionPerformed
-
-    private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_C1_CargoActionPerformed
 
     private void C2_SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C2_SenhaActionPerformed
         // TODO add your handling code here:
@@ -336,9 +398,28 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_C1_NomeActionPerformed
 
-    private void CB_NVL_ACESSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_NVL_ACESSOActionPerformed
+    private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CB_NVL_ACESSOActionPerformed
+    }//GEN-LAST:event_C1_CargoActionPerformed
+
+    private void Bttn1_AlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_AlterarActionPerformed
+        try {
+            Scanner in = new Scanner(new File("Cadastro.txt"));
+            Pessoa cadastro = new Pessoa();
+            
+            cadastro.setNome(C1_Nome.getText());
+            cadastro.setCel(C1_telefone.getText());
+            cadastro.setCpf(C1_CPF.getText());
+            cadastro.setLogin(C2_Login.getText());
+            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
+            cadastro.setTipoUser(TipoUsuario.textUsuarioInt(C1_Cargo.getText()));
+            cadastro.alterarArq(loginAlterar);
+            
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso");
+        } catch (IOException ex) {
+            Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_Bttn1_AlterarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,6 +457,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Bttn1_Alterar;
     private javax.swing.JButton Bttn1_Cadastrar;
     private javax.swing.JButton Bttn1_Cancelar;
     private javax.swing.JFormattedTextField C1_CPF;
@@ -384,11 +466,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField C1_telefone;
     private javax.swing.JTextField C2_Login;
     private javax.swing.JPasswordField C2_Senha;
-    private javax.swing.JComboBox<String> CB_NVL_ACESSO;
     private javax.swing.JLabel T1_CPF;
     private javax.swing.JLabel T1_Cargo;
     private javax.swing.JLabel T1_Nome;
-    private javax.swing.JLabel T1_nvl_acesso;
     private javax.swing.JLabel T1_telefone;
     private javax.swing.JLabel T2_Cabeçalho;
     private javax.swing.JLabel T2_Senha;
@@ -400,4 +480,29 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
+    private String loginAlterar;
+            
+    public javax.swing.JButton getBttn1_Cadastrar(){
+        return this.Bttn1_Cadastrar;
+    }
+    
+    public javax.swing.JButton getBttn1_Alterar(){
+        return this.Bttn1_Alterar;
+    }
+    
+    public javax.swing.JLabel getJLabel1(){
+        return this.jLabel1;
+    }
+    
+    public javax.swing.JLabel getT1_Cargo(){
+        return this.T1_Cargo;
+    }
+    
+    public javax.swing.JTextField getC1_Cargo(){
+        return this.C1_Cargo;
+    }
+    
+    public javax.swing.JPasswordField getC2_Senha(){
+        return this.C2_Senha;
+    }
 }
