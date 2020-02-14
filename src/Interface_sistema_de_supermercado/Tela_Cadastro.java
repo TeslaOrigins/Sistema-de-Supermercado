@@ -15,7 +15,7 @@ import sistema_de_supermercado.TipoUsuario;
 
 /**
  *
- * @author Natalo Santos
+ * @author Natalo Santos and friends
  */
 public class Tela_Cadastro extends javax.swing.JFrame {
 
