@@ -104,19 +104,14 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="T1_telefone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="T1_Nome" alignment="1" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="T1_Nome" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="T2_Senha" min="-2" max="-2" attributes="0"/>
-                                              <Component id="T2_login" min="-2" max="-2" attributes="0"/>
-                                              <Component id="T1_CPF" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="T2_Senha" min="-2" max="-2" attributes="0"/>
+                                      <Component id="T2_login" min="-2" max="-2" attributes="0"/>
+                                      <Component id="T1_CPF" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -379,10 +374,11 @@
         <Component class="javax.swing.JComboBox" name="C1_Cargo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
-                <StringItem index="0" value="1-Chefe"/>
-                <StringItem index="1" value="2-Gerente"/>
-                <StringItem index="2" value="3-Funcion&#xe1;rio"/>
+              <StringArray count="4">
+                <StringItem index="0" value="---Selecione---"/>
+                <StringItem index="1" value="Funcion&#xe1;rio"/>
+                <StringItem index="2" value="Gerente"/>
+                <StringItem index="3" value="Chefe"/>
               </StringArray>
             </Property>
           </Properties>
