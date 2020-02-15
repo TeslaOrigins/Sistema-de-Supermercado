@@ -76,9 +76,9 @@ public class Produto {
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
-    public String cadastrarArq(){
-        try{                                                   //Famoso TryCatch, caso dê erro na execução 
-           FileWriter fw= new FileWriter ("Estoque.txt",true); //Recebe o objeto que é o Estoque e escreve no arquivo
+    public String cadastrarEst(){
+        try{                                                   //Famoso TryCatch, caso dê erro na execução . Tirar o caminho
+           FileWriter fw= new FileWriter ("C:\\Users\\Paulo.DESKTOP-11NI091\\Documents\\NetBeansProjects\\PROJETO-POO\\Sistema-de-Supermercado\\Estoque.txt",true); //Recebe o objeto que é o Estoque e escreve no arquivo
            PrintWriter pw= new PrintWriter(fw);               //Quase a mesma coisa, vai entender
            pw.println(this.codBarras+";"+this.nome+";"+this.preço+";"+this.qtd+";"+this.subtotal); //Escreve cada um em cada um
            pw.flush();                                       //Grava o conteúdo do buffer no destino
@@ -88,34 +88,6 @@ public class Produto {
         }catch (IOException ex){    //serve para tratar as exceçoes(erros)  
             Logger.getLogger(Produto.class.getName()).log(Level.SEVERE,null,ex);
         }
-       return "Salvo com sucesso";
-    } /*
-    public String alterarArq(String compara) throws IOException {
-        try{                                                   
-            Scanner in = new Scanner(new File("Estoque.txt")); 
-            FileWriter fw = new FileWriter ("TEMP-ARQ",true);
-            StringBuilder arq = new StringBuilder();
-            String s;
-            while(in.hasNextLine()){
-                s = in.nextLine();
-                String[] sArray = s.split(";");
-                
-                if(!sArray[3].equals(compara)){
-                    arq.append(s);
-                    arq.append('\n');
-                }                
-            }
-            fw.write(arq.toString());
-            fw.write(this.codBarras+";"+this.nome+";"+this.preço+";"+this.qtd+";"+this.subtotal);
-            fw.flush();                                       
-            fw.close();                                      
-            
-            new File("Estoque.txt").delete();
-            new File("TEMP-ARQ").renameTo(new File("Estoque.txt"));            
-        }catch (IOException ex){     
-            Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        
-        return "Alterado com sucesso";
-    }*/
+       return "Produto Cadastrado";
+    } 
 }

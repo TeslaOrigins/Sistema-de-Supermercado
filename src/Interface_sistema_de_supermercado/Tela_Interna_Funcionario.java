@@ -1,6 +1,9 @@
 package Interface_sistema_de_supermercado;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import sistema_de_supermercado.Produto;
@@ -30,6 +33,19 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
 
         tbl_prod.setModel(modelo);
     }
+    
+    public ArrayList getProd() throws FileNotFoundException{
+        ArrayList prod = new ArrayList();
+        Scanner in = new Scanner(new File("Estoque.txt"));
+        
+        while (in.hasNextLine()) { /* VER A LÓGICA COM MATHEUS */
+            String s = in.nextLine();
+            String[] sArray = s.split(";");
+            prod.add(sArray[0]);
+        }
+        
+        return prod;
+    }
 
     public Tela_Interna_Funcionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -38,6 +54,8 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         op = "Navegar";
         ManipularInterface();
         c_totalPag.setEnabled(false);
+        c_nomeProd.setEnabled(false);
+        c_preço.setEnabled(false);
     }
 
     /**
@@ -64,16 +82,12 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
                 btn_remover.setEnabled(false);
                 btn_pag.setEnabled(false);
                 btn_cancel.setEnabled(false);
-                c_nomeProd.setEnabled(true);
-                c_preço.setEnabled(true);
                 c_qtd.setEnabled(true);
             case "Adicionar":
                 btn_add.setEnabled(true);
                 btn_remover.setEnabled(false);
                 btn_pag.setEnabled(true);
                 btn_cancel.setEnabled(true);
-                c_nomeProd.setEnabled(true);
-                c_preço.setEnabled(true);
                 c_qtd.setEnabled(true);
                 break;
             case "Remover":
@@ -81,8 +95,6 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
                 btn_remover.setEnabled(true);
                 btn_pag.setEnabled(true);
                 btn_cancel.setEnabled(true);
-                c_nomeProd.setEnabled(true);
-                c_preço.setEnabled(true);
                 c_qtd.setEnabled(true);
                 break;
             default:
