@@ -127,6 +127,28 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel1">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Relat&#xf3;rio ">
+                    <Property name="tabTitle" type="java.lang.String" value="Relat&#xf3;rio "/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="811" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="384" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
             <Container class="javax.swing.JPanel" name="jPanel3">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -156,15 +178,15 @@
                               <Group type="102" attributes="0">
                                   <Component id="Bttn_Novoprod" min="-2" pref="73" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_Salvar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_Editar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_excluir" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_cancelar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="18" max="32767" attributes="0"/>
-                                  <Component id="jTextField1" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="C2_pesquisar" min="-2" pref="146" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -175,23 +197,23 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextField4" min="-2" pref="73" max="-2" attributes="0"/>
+                                          <Component id="C_CodProd" min="-2" pref="73" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jFormattedTextField1" max="32767" attributes="0"/>
+                                          <Component id="C_Preço" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField2" min="-2" pref="208" max="-2" attributes="0"/>
+                                  <Component id="C_Prod" min="-2" pref="208" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField3" min="-2" pref="83" max="-2" attributes="0"/>
+                                  <Component id="C_Qtd" min="-2" pref="83" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -210,30 +232,30 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="C_Prod" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="C_Qtd" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="C_CodProd" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="jFormattedTextField1" min="-2" max="-2" attributes="0"/>
+                              <Component id="C_Preço" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_Salvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_Editar" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_excluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="C2_pesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton7" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="Bttn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="Bttn_Novoprod" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="233" max="32767" attributes="0"/>
+                          <EmptySpace pref="223" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -274,7 +296,7 @@
                     <Property name="text" type="java.lang.String" value="Produto:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="C_Prod">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
@@ -287,7 +309,7 @@
                     <Property name="text" type="java.lang.String" value="Quantidade:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="C_Qtd">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
@@ -300,16 +322,16 @@
                     <Property name="text" type="java.lang.String" value="Pre&#xe7;o:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField4">
+                <Component class="javax.swing.JTextField" name="C_CodProd">
                 </Component>
-                <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
+                <Component class="javax.swing.JFormattedTextField" name="C_Pre&#xe7;o">
                   <Properties>
                     <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                       <Format format="&#xa4;#,##0.00" subtype="-1" type="4"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jFormattedTextField1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="C_Pre&#xe7;oActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="Bttn_Novoprod">
@@ -323,7 +345,7 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Bttn_NovoprodActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="Bttn_Salvar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
@@ -331,7 +353,7 @@
                     <Property name="text" type="java.lang.String" value="Salvar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="Bttn_Editar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
@@ -339,7 +361,7 @@
                     <Property name="text" type="java.lang.String" value="Editar"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="Bttn_excluir">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
@@ -347,7 +369,7 @@
                     <Property name="text" type="java.lang.String" value="Excluir"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="C2_pesquisar">
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton6">
                   <Properties>
@@ -365,7 +387,7 @@
                     <Property name="text" type="java.lang.String" value="Sair"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="Bttn_cancelar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Dialog" size="14" style="1"/>
@@ -374,28 +396,6 @@
                   </Properties>
                 </Component>
               </SubComponents>
-            </Container>
-            <Container class="javax.swing.JPanel" name="jPanel1">
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Relat&#xf3;rio ">
-                    <Property name="tabTitle" type="java.lang.String" value="Relat&#xf3;rio "/>
-                  </JTabbedPaneConstraints>
-                </Constraint>
-              </Constraints>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="811" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="384" max="32767" attributes="0"/>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
             </Container>
           </SubComponents>
         </Container>

@@ -1,5 +1,4 @@
 package Interface_sistema_de_supermercado;
-import Controller.Validacao_CPF;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
@@ -194,6 +193,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         Bttn1_Cancelar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         Bttn1_Cancelar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Cancelar.setText("Cancelar");
+        Bttn1_Cancelar.setMaximumSize(new java.awt.Dimension(98, 35));
+        Bttn1_Cancelar.setMinimumSize(new java.awt.Dimension(98, 35));
         Bttn1_Cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Bttn1_CancelarActionPerformed(evt);
@@ -222,7 +223,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(174, 174, 174))
         );
@@ -234,7 +235,12 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        Bttn1_Alterar.setBackground(new java.awt.Color(248, 148, 6));
+        Bttn1_Alterar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        Bttn1_Alterar.setForeground(new java.awt.Color(255, 255, 255));
         Bttn1_Alterar.setText("Alterar");
+        Bttn1_Alterar.setMaximumSize(new java.awt.Dimension(98, 35));
+        Bttn1_Alterar.setMinimumSize(new java.awt.Dimension(98, 35));
         Bttn1_Alterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Bttn1_AlterarActionPerformed(evt);
@@ -284,7 +290,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                         .addGap(37, 37, 37))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Bttn1_Alterar)
+                        .addComponent(Bttn1_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Bttn1_Cadastrar)
                         .addGap(18, 18, 18)
@@ -317,11 +323,11 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T2_Senha)
                     .addComponent(C2_Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Bttn1_Cancelar)
+                    .addComponent(Bttn1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Bttn1_Cadastrar)
-                    .addComponent(Bttn1_Alterar))
+                    .addComponent(Bttn1_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
         );
 
@@ -339,7 +345,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(T2_Cabeçalho))
         );
 

@@ -18,7 +18,8 @@ public class TipoUsuario {
     }
     
     public static final String usuarioGerenteToString(){
-        return "2";
+       return "2";
+        
     }
     
     public static final String usuarioChefeToString(){
@@ -27,13 +28,13 @@ public class TipoUsuario {
     
     public static String textUsuarioString(String s){
         if(s.toLowerCase().equals(USUARIO_FUNCIONARIO_STRING) || s.equals(usuarioFuncionarioToString())){
-            return "1";
+            return null;
         }    
         if(s.toLowerCase().equals(USUARIO_GERENTE_STRING) || s.equals(usuarioGerenteToString())){
-            return "2";
+            return null;
         }
         if(s.toLowerCase().equals(USUARIO_CHEFE_STRING) || s.equals(usuarioChefeToString())){
-            return "3";
+            return null;
         }
         
         return null;
