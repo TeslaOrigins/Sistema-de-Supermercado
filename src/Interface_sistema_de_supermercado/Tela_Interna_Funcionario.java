@@ -1,9 +1,14 @@
 package Interface_sistema_de_supermercado;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+    import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import sistema_de_supermercado.Produto;
@@ -34,7 +39,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         tbl_prod.setModel(modelo);
     }
     
-    public ArrayList getProd() throws FileNotFoundException{
+    public ArrayList getProd() throws FileNotFoundException{ //VER SE DA PRA APROVEITAR
         ArrayList prod = new ArrayList();
         Scanner in = new Scanner(new File("Estoque.txt"));
         
@@ -228,6 +233,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         jLabel2.setText("TOTAL A PAGAR:");
 
         c_totalPag.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        c_totalPag.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         c_totalPag.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_totalPagActionPerformed(evt);
@@ -293,11 +299,14 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Preço:");
 
+        c_nomeProd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         c_nomeProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_nomeProdActionPerformed(evt);
             }
         });
+
+        c_preço.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -454,6 +463,30 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
         op = "Pesquisar";
         ManipularInterface();
+        
+        try {
+            FileInputStream   estoque = new FileInputStream("Estoque.txt"); //Entrada pra ler
+            InputStreamReader input   = new InputStreamReader(estoque); //Quem vai ler o arquivo
+            BufferedReader    br      = new BufferedReader(input); //Ler linha por linha (função readLine) até encontrar o \n
+            String linha;
+                       
+            do{ // Faça algo enquanto tiver conteudo
+                linha = br.readLine(); //Leio a linha
+                if(linha != null){ //Se for lido e diferente de null, faça:
+                    String [] palavras = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
+                    
+                    if(palavras[0].equals(c_codBarras.getText())){ //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
+                    System.out.println(palavras[0] + " " + palavras[1] + " " + palavras[2] + " " + palavras[3]);
+                    c_nomeProd.setText(palavras[1]);
+                    c_preço.setText(palavras[2]);
+                    }
+                }
+            } while(linha!=null);
+            
+        } catch (Exception e) {
+            Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(Level.SEVERE, null, e);
+        }        
+        
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed

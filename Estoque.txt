@@ -1,0 +1,5 @@
+1;Air Jordan 5 Retro;1099.99;20
+2;Nike;300.0;21
+3;Miojo Nissin;1.96;100
+4;Mi 9 Lite;1599.99;3
+5;Arroz Dalon;3.65;200
