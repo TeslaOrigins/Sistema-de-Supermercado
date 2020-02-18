@@ -48,7 +48,7 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
         c_nomeProd = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        Bttn_Novoprod = new javax.swing.JButton();
+        Bttn_NovoProd = new javax.swing.JButton();
         Bttn_Salvar = new javax.swing.JButton();
         Bttn_Editar = new javax.swing.JButton();
         Bttn_excluir = new javax.swing.JButton();
@@ -140,19 +140,24 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Preço:");
 
-        Bttn_Novoprod.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Bttn_Novoprod.setText("Novo");
-        Bttn_Novoprod.setToolTipText("Cadastrar um novo produto no estoque");
-        Bttn_Novoprod.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Bttn_Novoprod.addActionListener(new java.awt.event.ActionListener() {
+        Bttn_NovoProd.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Bttn_NovoProd.setText("Novo");
+        Bttn_NovoProd.setToolTipText("Cadastrar um novo produto no estoque");
+        Bttn_NovoProd.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Bttn_NovoProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Bttn_NovoprodActionPerformed(evt);
+                Bttn_NovoProdActionPerformed(evt);
             }
         });
 
         Bttn_Salvar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Bttn_Salvar.setText("Salvar");
         Bttn_Salvar.setToolTipText("");
+        Bttn_Salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Bttn_SalvarActionPerformed(evt);
+            }
+        });
 
         Bttn_Editar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Bttn_Editar.setText("Editar");
@@ -215,7 +220,7 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(Bttn_Novoprod, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Bttn_NovoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(Bttn_Salvar)
                                         .addGap(18, 18, 18)
@@ -276,7 +281,7 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
                         .addComponent(jButton7)
                         .addComponent(Bttn_cancelar))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Bttn_Novoprod, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Bttn_NovoProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Bttn_Salvar)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,9 +332,13 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
         c_preço.setText(null);
         c_qtd.setText(null);
         
-    }
-    
-    private void Bttn_NovoprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn_NovoprodActionPerformed
+    }                                             
+
+    private void C_PreçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_PreçoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C_PreçoActionPerformed
+
+    private void Bttn_NovoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn_NovoProdActionPerformed
         Produto estoque = new Produto();
         estoque.setCodBarras(Integer.parseInt(c_codBarras.getText()));
         estoque.setNome(c_nomeProd.getText());
@@ -346,15 +355,11 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, estoque.cadastrarEst());
         }
         limpar_Campos();
-    }//GEN-LAST:event_Bttn_NovoprodActionPerformed
+    }//GEN-LAST:event_Bttn_NovoProdActionPerformed
 
-    private void C_PreçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_PreçoActionPerformed
+    private void Bttn_SalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn_SalvarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_C_PreçoActionPerformed
-
-    private void Bttn_NovoprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn_NovoprodActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Bttn_NovoprodActionPerformed
+    }//GEN-LAST:event_Bttn_SalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,7 +398,7 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Bttn_Editar;
-    private javax.swing.JButton Bttn_Novoprod;
+    private javax.swing.JButton Bttn_NovoProd;
     private javax.swing.JButton Bttn_Salvar;
     private javax.swing.JButton Bttn_cancelar;
     private javax.swing.JButton Bttn_excluir;

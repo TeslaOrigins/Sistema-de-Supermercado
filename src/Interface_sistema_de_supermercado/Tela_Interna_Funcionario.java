@@ -22,6 +22,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     ArrayList<Produto> ListaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
     
+    
     public void CarregarTabProd() {
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
 
@@ -55,6 +56,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     public Tela_Interna_Funcionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         ListaProd = new ArrayList();
         op = "Navegar";
         ManipularInterface();

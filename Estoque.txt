@@ -3,3 +3,6 @@
 3;Miojo Nissin;1.96;100
 4;Mi 9 Lite;1599.99;3
 5;Arroz Dalon;3.65;200
+6;Mi Band 4;260.0;3
+7;Nescau 2.0;14.9;40
+8;Peito de Frango;14.0;30

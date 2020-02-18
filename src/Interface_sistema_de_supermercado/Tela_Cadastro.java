@@ -1,6 +1,5 @@
 package Interface_sistema_de_supermercado;
 
-import Controller.Validacao_CPF;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sistema_de_supermercado.Pessoa;
