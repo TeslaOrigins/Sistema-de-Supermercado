@@ -8,4 +8,4 @@ natalo;(45)54445-6454;445.456.456-45;hkcgk;null;1
 dalan;(00)00000-0000;000.000.000-00;dalan;QX2KJGT6bdDjudHVRPbXpQ==;1
 dalas;(00)00000-0000;000.000.000-00;dalas;QX2KJGT6bdDjudHVRPbXpQ==;3
 golirab;(00)00000-0000;000.000.000-00;golira;QX2KJGT6bdDjudHVRPbXpQ==;1
-natalo;(44)46464-5454;534.534.534-53;natalo;null;1
+
