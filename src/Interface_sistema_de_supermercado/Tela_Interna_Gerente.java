@@ -348,6 +348,14 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
         limpar_Campos();
     }//GEN-LAST:event_Bttn_NovoprodActionPerformed
 
+    private void C_PreçoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C_PreçoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_C_PreçoActionPerformed
+
+    private void Bttn_NovoprodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn_NovoprodActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Bttn_NovoprodActionPerformed
+
     /**
      * @param args the command line arguments
      */
