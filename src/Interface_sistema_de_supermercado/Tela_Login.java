@@ -210,6 +210,7 @@ public class Tela_Login extends javax.swing.JFrame {
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_EntrarActionPerformed
+        Background b = new Background();
         File cadastro = new File("Cadastro.txt");
         int tipo = 0;
         boolean achou = false;
@@ -236,6 +237,7 @@ public class Tela_Login extends javax.swing.JFrame {
             switch(tipo){
                 case TipoUsuario.USUARIO_FUNCIONARIO_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                b.setVisible(true);
                 Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
                 Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_IF.setLocationRelativeTo(null);       // tela no centro
@@ -244,6 +246,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 break;
                 case TipoUsuario.USUARIO_GERENTE_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                b.setVisible(true);
                 Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
                 Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_IG.setLocationRelativeTo(null);       // tela no centro
@@ -252,6 +255,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 break;
                 case TipoUsuario.USUARIO_CHEFE_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                b.setVisible(true);
                 Tela_Busca Tela_B = new Tela_Busca(); //chama a tela interna Chefe
                 Tela_B.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_B.setLocationRelativeTo(null);       // tela no centro
