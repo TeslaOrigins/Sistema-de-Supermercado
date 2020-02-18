@@ -1,30 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controller;
 
-import javax.swing.JFormattedTextField;
+package sistema_de_supermercado;
+
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
 /**
  *
- * @author Natalo Santos
+ * @author Paulo
  */
-public class Validacao_CPF {
-      private String cpf;
+public class ValidarCPF {
+    private String cpf;
     private static final String Formato = "###.###.###-##";
     
-    public Validacao_CPF(String C) {
+    public ValidarCPF(String C) {
         this.cpf = this.Format(C,false);
     }
-
-
-    public Validacao_CPF(JFormattedTextField C1_CPF, boolean b) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
     public boolean isCPF(){
         
         if (this.cpf.equals("00000000000") || 
@@ -104,5 +96,3 @@ public class Validacao_CPF {
         }
     }
 }
-
-   

@@ -1,6 +1,14 @@
 package Interface_sistema_de_supermercado;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+    import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import sistema_de_supermercado.Produto;
@@ -10,32 +18,53 @@ import sistema_de_supermercado.Produto;
  * @author Tesla
  */
 public class Tela_Interna_Funcionario extends javax.swing.JDialog {
+
     ArrayList<Produto> ListaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
+    String op;
     
-    public void CarregarTabProd (){
-        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código","Nome","Preço","Qtd","Subtotal"}, 0); //Modelagem de tabela padraõ
-        
-        for (int i=0; i<ListaProd.size();i++){
-            
-            Object linha[] = new Object[]{ListaProd.get(i).getCodBarras(), 
-                                          ListaProd.get(i).getNome(), 
-                                          ListaProd.get(i).getPreço(),
-                                          ListaProd.get(i).getQtd(),
-                                          ListaProd.get(i).getSubtotal()};
-        
-        modelo.addRow(linha); //Add a linha
+    
+    public void CarregarTabProd() {
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
+
+        for (int i = 0; i < ListaProd.size(); i++) {
+
+            Object linha[] = new Object[]{ListaProd.get(i).getCodBarras(),
+                ListaProd.get(i).getNome(),
+                ListaProd.get(i).getPreço(),
+                ListaProd.get(i).getQtd(),
+                ListaProd.get(i).getSubtotal()};
+
+            modelo.addRow(linha); //Add a linha
         }
-        
-        tbl_prod.setModel (modelo);
+
+        tbl_prod.setModel(modelo);
     }
     
+    public ArrayList getProd() throws FileNotFoundException{ //VER SE DA PRA APROVEITAR
+        ArrayList prod = new ArrayList();
+        Scanner in = new Scanner(new File("Estoque.txt"));
+        
+        while (in.hasNextLine()) { /* VER A LÓGICA COM MATHEUS */
+            String s = in.nextLine();
+            String[] sArray = s.split(";");
+            prod.add(sArray[0]);
+        }
+        
+        return prod;
+    }
+
     public Tela_Interna_Funcionario(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setLocationRelativeTo(null);
         ListaProd = new ArrayList();
-        ManipularInterface("Navegar");
+        op = "Navegar";
+        ManipularInterface();
+        c_totalPag.setEnabled(false);
+        c_nomeProd.setEnabled(false);
+        c_preço.setEnabled(false);
     }
-    
+
     /**
      * Creates new form Tela_Interna_Funcionario
      */
@@ -44,40 +73,42 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         this.setLocationRelativeTo(null); //Janela no centro da tela
     }
 
-    public void ManipularInterface (String op){
-        switch(op){
+    public void ManipularInterface() {
+        switch (op) {
             case "Navegar":
                 btn_add.setEnabled(false);
                 btn_remover.setEnabled(false);
                 btn_pag.setEnabled(false);
                 btn_cancel.setEnabled(false);
-                c_totalPag.setEnabled(false);
                 c_nomeProd.setEnabled(false);
                 c_preço.setEnabled(false);
                 c_qtd.setEnabled(true);
                 break;
             case "Pesquisar": //Liberando o NOME E PRECO pra teste
                 btn_add.setEnabled(true);
-                btn_remover.setEnabled(true);
+                btn_remover.setEnabled(false);
                 btn_pag.setEnabled(false);
                 btn_cancel.setEnabled(false);
-                c_totalPag.setEnabled(false);
-                c_nomeProd.setEnabled(true);
-                c_preço.setEnabled(true);
                 c_qtd.setEnabled(true);
             case "Adicionar":
+                btn_add.setEnabled(true);
+                btn_remover.setEnabled(false);
+                btn_pag.setEnabled(true);
+                btn_cancel.setEnabled(true);
+                c_qtd.setEnabled(true);
+                break;
+            case "Remover":
                 btn_add.setEnabled(true);
                 btn_remover.setEnabled(true);
                 btn_pag.setEnabled(true);
                 btn_cancel.setEnabled(true);
-                c_totalPag.setEnabled(false);
-                c_nomeProd.setEnabled(true);
-                c_preço.setEnabled(true);
                 c_qtd.setEnabled(true);
                 break;
-            default: System.out.println("Inválido");
+            default:
+                System.out.println("Inválido");
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -151,12 +182,22 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
+        tbl_prod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_prodMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tbl_prod);
         if (tbl_prod.getColumnModel().getColumnCount() > 0) {
+            tbl_prod.getColumnModel().getColumn(0).setResizable(false);
             tbl_prod.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tbl_prod.getColumnModel().getColumn(1).setResizable(false);
             tbl_prod.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tbl_prod.getColumnModel().getColumn(2).setResizable(false);
             tbl_prod.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tbl_prod.getColumnModel().getColumn(3).setResizable(false);
             tbl_prod.getColumnModel().getColumn(3).setPreferredWidth(20);
+            tbl_prod.getColumnModel().getColumn(4).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -194,6 +235,12 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         jLabel2.setText("TOTAL A PAGAR:");
 
         c_totalPag.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        c_totalPag.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        c_totalPag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                c_totalPagActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -254,11 +301,14 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Preço:");
 
+        c_nomeProd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         c_nomeProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 c_nomeProdActionPerformed(evt);
             }
         });
+
+        c_preço.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -268,6 +318,11 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         btn_remover.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_remover.setForeground(new java.awt.Color(255, 255, 255));
         btn_remover.setText("REMOVER");
+        btn_remover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_removerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -284,7 +339,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btn_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -374,9 +429,9 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(249, 249, 249)
+                .addGap(262, 262, 262)
                 .addComponent(jLabel1)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -404,25 +459,51 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void c_codBarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_codBarrasActionPerformed
-        
+
     }//GEN-LAST:event_c_codBarrasActionPerformed
 
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
-       ManipularInterface("Pesquisar");
+        op = "Pesquisar";
+        ManipularInterface();
+        
+        try {
+            FileInputStream   estoque = new FileInputStream("Estoque.txt"); //Entrada pra ler
+            InputStreamReader input   = new InputStreamReader(estoque); //Quem vai ler o arquivo
+            BufferedReader    br      = new BufferedReader(input); //Ler linha por linha (função readLine) até encontrar o \n
+            String linha;
+                       
+            do{ // Faça algo enquanto tiver conteudo
+                linha = br.readLine(); //Leio a linha
+                if(linha != null){ //Se for lido e diferente de null, faça:
+                    String [] palavras = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
+                    
+                    if(palavras[0].equals(c_codBarras.getText())){ //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
+                    System.out.println(palavras[0] + " " + palavras[1] + " " + palavras[2] + " " + palavras[3]);
+                    c_nomeProd.setText(palavras[1]);
+                    c_preço.setText(palavras[2]);
+                    }
+                }
+            } while(linha!=null);
+            
+        } catch (Exception e) {
+            Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(Level.SEVERE, null, e);
+        }        
+        
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-       ManipularInterface("Adicionar");
-       int cod = Integer.parseInt(c_codBarras.getText());
-       double pre = Integer.parseInt(c_preço.getText());
-       int qd = Integer.parseInt(c_qtd.getText());
-       Produto P = new Produto(cod, c_nomeProd.getText(), pre, qd, qd*pre);
-       ListaProd.add(P);
-       CarregarTabProd();
+        op = "Adicionar";
+        ManipularInterface();
+        int cod = Integer.parseInt(c_codBarras.getText());
+        double pre = Integer.parseInt(c_preço.getText());
+        int qd = Integer.parseInt(c_qtd.getText());
+        Produto P = new Produto(cod, c_nomeProd.getText(), pre, qd, qd * pre);
+        ListaProd.add(P);
+        CarregarTabProd();
     }//GEN-LAST:event_btn_addActionPerformed
 
     private void c_nomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_nomeProdActionPerformed
-        
+
     }//GEN-LAST:event_c_nomeProdActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -432,6 +513,31 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         Tela_L.setLocationRelativeTo(null);     //Centro
         Tela_L.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void btn_removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removerActionPerformed
+        int index = tbl_prod.getSelectedRow();
+        if(index>=0 && index<ListaProd.size()){
+            ListaProd.remove(index);
+        }
+        CarregarTabProd();
+        op = "Navegar";
+        ManipularInterface();            
+    }//GEN-LAST:event_btn_removerActionPerformed
+
+    private void tbl_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_prodMouseClicked
+        int index = tbl_prod.getSelectedRow();
+        if (index >= 0 && index < ListaProd.size()) {
+            Produto P = ListaProd.get(index);
+            c_codBarras.setText(String.valueOf(P.getCodBarras()));
+            c_nomeProd.setText(P.getNome());
+            op = "Remover";
+            ManipularInterface();
+        }
+    }//GEN-LAST:event_tbl_prodMouseClicked
+
+    private void c_totalPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_totalPagActionPerformed
+        
+    }//GEN-LAST:event_c_totalPagActionPerformed
 
     /**
      * @param args the command line arguments
