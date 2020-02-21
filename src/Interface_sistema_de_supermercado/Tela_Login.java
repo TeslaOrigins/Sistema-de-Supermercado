@@ -211,7 +211,12 @@ public class Tela_Login extends javax.swing.JFrame {
         int tipo = 0;
         boolean achou = false;
         String login = C1_LOGIN.getText().trim();
-        String senha = CriptografaSenha.encryptPasswd(String.valueOf(C1_SENHA.getPassword()), CriptografaSenha.SECRET_KEY); //usa valueOf pq o campo é senha é um char, e queremos o text.
+        String senha = ""; 
+        try {
+            senha = CriptografaSenha.encrypt(String.valueOf(C1_SENHA.getPassword())); //usa valueOf pq o campo é senha é um char, e queremos o text.
+        } catch (Exception ex) {
+            Logger.getLogger(Tela_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));

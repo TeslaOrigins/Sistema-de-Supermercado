@@ -156,8 +156,9 @@ public class Tela_Busca extends javax.swing.JFrame {
             Tela_C.alteraFuncionario((String)jList1.getSelectedValue());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Tela_Busca.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Tela_C.setVisible(true);        
+        } catch (Exception ex) {
+            Logger.getLogger(Tela_Busca.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }//GEN-LAST:event_jList1MouseClicked
 
     private void C2_identificadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_C2_identificadorKeyReleased
