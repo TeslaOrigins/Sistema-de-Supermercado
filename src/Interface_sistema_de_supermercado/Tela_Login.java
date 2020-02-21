@@ -239,8 +239,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 case TipoUsuario.USUARIO_FUNCIONARIO_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                 b.setVisible(true);
-                Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
-                Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_Vendas Tela_IF = new Tela_Vendas();                 Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_IF.setLocationRelativeTo(null);       // tela no centro
                 Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 this.dispose();                           //fecha a tela após o click
@@ -248,8 +247,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 case TipoUsuario.USUARIO_GERENTE_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                 b.setVisible(true);
-                Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
-                Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_Estoque Tela_IG = new Tela_Estoque();                 Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_IG.setLocationRelativeTo(null);       // tela no centro
                 Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 this.dispose();

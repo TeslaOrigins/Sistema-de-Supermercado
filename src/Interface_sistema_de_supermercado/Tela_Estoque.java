@@ -13,12 +13,12 @@ import sistema_de_supermercado.Produto;
  *
  * @author Tesla
  */
-public class Tela_Interna_Gerente extends javax.swing.JFrame {
+public class Tela_Estoque extends javax.swing.JFrame {
 
     ArrayList<Produto> ListaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
 
-    public Tela_Interna_Gerente() {
+    public Tela_Estoque() {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
         setResizable(false); // bloqueia o maximizar 
@@ -378,20 +378,20 @@ public class Tela_Interna_Gerente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Gerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Estoque.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Tela_Interna_Gerente().setVisible(true);
+                new Tela_Estoque().setVisible(true);
             }
         });
     }

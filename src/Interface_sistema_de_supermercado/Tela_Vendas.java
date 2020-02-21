@@ -17,7 +17,7 @@ import sistema_de_supermercado.Produto;
  *
  * @author Tesla
  */
-public class Tela_Interna_Funcionario extends javax.swing.JDialog {
+public class Tela_Vendas extends javax.swing.JDialog {
 
     ArrayList<Produto> ListaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
@@ -25,7 +25,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     
     public void CarregarTabProd() {
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
-
+        
         for (int i = 0; i < ListaProd.size(); i++) {
 
             Object linha[] = new Object[]{ListaProd.get(i).getCodBarras(),
@@ -53,7 +53,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         return prod;
     }
 
-    public Tela_Interna_Funcionario(java.awt.Frame parent, boolean modal) {
+    public Tela_Vendas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -68,7 +68,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
     /**
      * Creates new form Tela_Interna_Funcionario
      */
-    public Tela_Interna_Funcionario() {
+    public Tela_Vendas() {
         initComponents();
         this.setLocationRelativeTo(null); //Janela no centro da tela
     }
@@ -486,7 +486,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
             } while(linha!=null);
             
         } catch (Exception e) {
-            Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Tela_Vendas.class.getName()).log(Level.SEVERE, null, e);
         }        
         
     }//GEN-LAST:event_btn_pesquisarActionPerformed
@@ -556,13 +556,13 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Tela_Interna_Funcionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela_Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -572,7 +572,7 @@ public class Tela_Interna_Funcionario extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Tela_Interna_Funcionario dialog = new Tela_Interna_Funcionario(new javax.swing.JFrame(), true);
+                Tela_Vendas dialog = new Tela_Vendas(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
