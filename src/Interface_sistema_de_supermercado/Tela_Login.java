@@ -213,7 +213,7 @@ public class Tela_Login extends javax.swing.JFrame {
         String login = C1_LOGIN.getText().trim();
         String senha = ""; 
         try {
-            senha = CriptografaSenha.encrypt(String.valueOf(C1_SENHA.getPassword())); //usa valueOf pq o campo é senha é um char, e queremos o text.
+            senha = CriptografaSenha.encryptPasswd(String.valueOf(C1_SENHA.getPassword())); //usa valueOf pq o campo é senha é um char, e queremos o text.
         } catch (Exception ex) {
             Logger.getLogger(Tela_Login.class.getName()).log(Level.SEVERE, null, ex);
         }

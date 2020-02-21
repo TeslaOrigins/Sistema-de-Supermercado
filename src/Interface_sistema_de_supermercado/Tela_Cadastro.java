@@ -42,7 +42,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 C1_telefone.setText(sArray[1]);
                 C1_CPF.setText(sArray[2]);
                 C2_Login.setText(sArray[3]);
-                C2_Senha.setText(CriptografaSenha.decrypt(sArray[4]));
+                C2_Senha.setText(CriptografaSenha.decryptPasswd(sArray[4]));
                 C1_Cargo.addItem(sArray[5]);
                 loginAlterar = sArray[3];
             }
@@ -346,7 +346,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             cadastro.setCel(C1_telefone.getText());
             cadastro.setCpf(C1_CPF.getText());
             cadastro.setLogin(C2_Login.getText());
-            cadastro.setSenha(CriptografaSenha.encrypt(String.valueOf(C2_Senha.getPassword())));
+            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword())));
             cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
         } catch (Exception ex) {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
@@ -405,7 +405,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             cadastro.setCel(C1_telefone.getText());
             cadastro.setCpf(C1_CPF.getText());
             cadastro.setLogin(C2_Login.getText());
-            cadastro.setSenha(CriptografaSenha.encrypt(String.valueOf(C2_Senha.getPassword())));
+            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword())));
             cadastro.setTipoUser(TipoUsuario.textUsuarioInt(C1_Cargo.getSelectedItem().toString()));
             cadastro.alterarArq(loginAlterar);
 
