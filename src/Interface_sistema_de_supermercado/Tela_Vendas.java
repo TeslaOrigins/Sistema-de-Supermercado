@@ -70,8 +70,11 @@ public class Tela_Vendas extends javax.swing.JFrame {
      * Creates new form Tela_Interna_Funcionario
      */
     public Tela_Vendas() {
+        setResizable(false);
         initComponents();
         this.setLocationRelativeTo(null); //Janela no centro da tela
+        c_totalPag.setEnabled(false);
+        c_nomeProd.setEnabled(false);
     }
 
     public void ManipularInterface() {
