@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-    import java.io.InputStreamReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -15,24 +15,24 @@ import sistema_de_supermercado.Produto;
 
 /**
  *
- * @author Tesla
+ * @author Paulo
  */
-public class Tela_Vendas extends javax.swing.JDialog {
-
-    ArrayList<Produto> ListaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
+public class Tela_Vendas extends javax.swing.JFrame {
+    
+    ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
     
     
     public void CarregarTabProd() {
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
         
-        for (int i = 0; i < ListaProd.size(); i++) {
+        for (int i = 0; i < listaProd.size(); i++) {
 
-            Object linha[] = new Object[]{ListaProd.get(i).getCodBarras(),
-                ListaProd.get(i).getNome(),
-                ListaProd.get(i).getPreço(),
-                ListaProd.get(i).getQtd(),
-                ListaProd.get(i).getSubtotal()};
+            Object linha[] = new Object[]{listaProd.get(i).getCodBarras(),
+                listaProd.get(i).getNome(),
+                listaProd.get(i).getPreço(),
+                listaProd.get(i).getQtd(),
+                listaProd.get(i).getSubtotal()};
 
             modelo.addRow(linha); //Add a linha
         }
@@ -54,10 +54,11 @@ public class Tela_Vendas extends javax.swing.JDialog {
     }
 
     public Tela_Vendas(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+        //super(parent, modal);
+        setResizable(false);
         initComponents();
         this.setLocationRelativeTo(null);
-        ListaProd = new ArrayList();
+        listaProd = new ArrayList();
         op = "Navegar";
         ManipularInterface();
         c_totalPag.setEnabled(false);
@@ -498,7 +499,7 @@ public class Tela_Vendas extends javax.swing.JDialog {
         double pre = Integer.parseInt(c_preço.getText());
         int qd = Integer.parseInt(c_qtd.getText());
         Produto P = new Produto(cod, c_nomeProd.getText(), pre, qd, qd * pre);
-        ListaProd.add(P);
+        listaProd.add(P);
         CarregarTabProd();
     }//GEN-LAST:event_btn_addActionPerformed
 
@@ -516,8 +517,8 @@ public class Tela_Vendas extends javax.swing.JDialog {
 
     private void btn_removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removerActionPerformed
         int index = tbl_prod.getSelectedRow();
-        if(index>=0 && index<ListaProd.size()){
-            ListaProd.remove(index);
+        if(index>=0 && index<listaProd.size()){
+            listaProd.remove(index);
         }
         CarregarTabProd();
         op = "Navegar";
@@ -526,8 +527,8 @@ public class Tela_Vendas extends javax.swing.JDialog {
 
     private void tbl_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_prodMouseClicked
         int index = tbl_prod.getSelectedRow();
-        if (index >= 0 && index < ListaProd.size()) {
-            Produto P = ListaProd.get(index);
+        if (index >= 0 && index < listaProd.size()) {
+            Produto P = listaProd.get(index);
             c_codBarras.setText(String.valueOf(P.getCodBarras()));
             c_nomeProd.setText(P.getNome());
             op = "Remover";

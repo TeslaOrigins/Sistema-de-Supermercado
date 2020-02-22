@@ -11,11 +11,11 @@ import sistema_de_supermercado.Produto;
 
 /**
  *
- * @author Tesla
+ * @author Paulo
  */
 public class Tela_Estoque extends javax.swing.JFrame {
 
-    ArrayList<Produto> ListaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
+    ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
 
     public Tela_Estoque() {
