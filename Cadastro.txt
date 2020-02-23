@@ -1,16 +1,2 @@
-FGFDHG;Telefone:(  )     -    ;CPF:534.453.453-44;HGJDFJGFT;null;1
-5654863;Telefone:(  )     -    ;CPF:   .   .   -  ;TRTE;null;1
-TYHDHXTJ;Telefone:(54)34536-5463;CPF:   .   .   -  ;GFRHD;null;1
-TYHDHXTJ;Telefone:(54)34536-5463;CPF:   .   .   -  ;GSDFG;null;1
-oii;Telefone:(64)63455-4545;CPF:546.546.544-54;455654654;null;1
-natalo;(45)54445-6454;445.456.456-45;hkcgk;null;1
-dalan;(00)00000-0000;000.000.000-00;dalan;QX2KJGT6bdDjudHVRPbXpQ==;1
-dalas;(00)00000-0000;000.000.000-00;dalas;QX2KJGT6bdDjudHVRPbXpQ==;3
-golirab;(00)00000-0000;000.000.000-00;golira;QX2KJGT6bdDjudHVRPbXpQ==;1
-Sei la;(79)99999-9999;068.845.415-12;seila;null;1
-dhhshsdhf;(43)54353-3452;080.398.975-05;natalo123;null;1
-natalo;(23)43244-1124;080.398.975-05;natalo;null;1
-natalo;(34)25124-3512;080.398.975-05;natalo;null;1
-;(  )     -    ;   .   .   -  ;;null;1
-natalo;(  )     -    ;080.398.975-05;natalo99;null;1
-natalo;(79)99999-9999;080.398.975-05;ntalo;null;1
+natalo;(34)55555-5555;080.398.975-05;nah1999;null;1
+natalo;(84)84844-4846;080.398.975-05;natalo99;null;1

@@ -28,6 +28,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         this.setLocationRelativeTo(null); //ela no centro
         setResizable(false); //bloqueia o maximizar 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Bttn1_Alterar.setVisible(false);
+
 
     }
 
@@ -405,6 +407,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_Bttn1_AlterarActionPerformed
 
     private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
