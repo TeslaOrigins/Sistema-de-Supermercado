@@ -6,3 +6,4 @@
 6;Mi Band 4;260.0;3
 7;Nescau 2.0;14.9;40
 8;Peito de Frango;14.0;30
+9;Leite La Serenissima;4.5;80
