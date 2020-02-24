@@ -353,10 +353,13 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         String cpf = cadastro.getCpf();
         
         ValidarCPF pf = new ValidarCPF(cpf);
-        if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()||pf.isCPF()==false){//validação de campos e checagem se o cpf é válido ou não.
-             JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos.\ne\nDigite um CPF válido.", "erro", JOptionPane.ERROR_MESSAGE); 
-        }else{ 
+        if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()){//validação de campos e checagem se o cpf é válido ou não.
+             JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos","Erro", JOptionPane.ERROR_MESSAGE); 
+        }else if(pf.isCPF()){ 
             JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
+        }else{
+            JOptionPane.showMessageDialog(null,"CPF invalido","erro",JOptionPane.ERROR_MESSAGE);
+        
         }
         limpar_Campos(); // método que limpa todos os campos após click cadastro
 
