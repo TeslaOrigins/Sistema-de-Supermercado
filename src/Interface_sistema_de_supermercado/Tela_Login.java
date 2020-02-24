@@ -97,7 +97,7 @@ public class Tela_Login extends javax.swing.JFrame {
 
         T1_N_SuperM.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         T1_N_SuperM.setForeground(new java.awt.Color(255, 255, 255));
-        T1_N_SuperM.setText("SUPERMERCADO  DO TEAM STI");
+        T1_N_SuperM.setText("       SUPERMERCADO  DO TEAM STI");
 
         jPanel2.setBackground(new java.awt.Color(248, 148, 6));
 
@@ -111,9 +111,9 @@ public class Tela_Login extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(59, 59, 59)
                 .addComponent(jLabel1)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,33 +144,29 @@ public class Tela_Login extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Bttn1_Entrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Bttn1_Cadastrar))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(274, 274, 274)
-                                .addComponent(T1_Login))
-                            .addComponent(C1_SENHA)
-                            .addComponent(C1_LOGIN))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(Bttn1_Entrar)
+                            .addGap(18, 18, 18)
+                            .addComponent(Bttn1_Cadastrar))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(274, 274, 274)
+                            .addComponent(T1_Login))
+                        .addComponent(C1_SENHA)
+                        .addComponent(C1_LOGIN))
+                    .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
+                .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(T1_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(T1_N_SuperM, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(C1_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,7 +174,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(C1_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Entrar)
@@ -215,7 +211,12 @@ public class Tela_Login extends javax.swing.JFrame {
         int tipo = 0;
         boolean achou = false;
         String login = C1_LOGIN.getText().trim();
-        String senha = CriptografaSenha.encryptPasswd(String.valueOf(C1_SENHA.getPassword()), CriptografaSenha.SECRET_KEY); //usa valueOf pq o campo é senha é um char, e queremos o text.
+        String senha = ""; 
+        try {
+            senha = CriptografaSenha.encryptPasswd(String.valueOf(C1_SENHA.getPassword())); //usa valueOf pq o campo é senha é um char, e queremos o text.
+        } catch (Exception ex) {
+            Logger.getLogger(Tela_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         try {
             Scanner in = new Scanner(new File("Cadastro.txt"));
@@ -238,8 +239,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 case TipoUsuario.USUARIO_FUNCIONARIO_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                 b.setVisible(true);
-                Tela_Interna_Funcionario Tela_IF = new Tela_Interna_Funcionario(); //chama a tela interna funcionario
-                Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_Vendas Tela_IF = new Tela_Vendas();                 Tela_IF.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_IF.setLocationRelativeTo(null);       // tela no centro
                 Tela_IF.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 this.dispose();                           //fecha a tela após o click
@@ -247,8 +247,7 @@ public class Tela_Login extends javax.swing.JFrame {
                 case TipoUsuario.USUARIO_GERENTE_INT:
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                 b.setVisible(true);
-                Tela_Interna_Gerente Tela_IG = new Tela_Interna_Gerente(); //chama a tela interna gerente
-                Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
+                Tela_Estoque Tela_IG = new Tela_Estoque();                 Tela_IG.setVisible(true);                  // serve para mostrar o Jframe na tela
                 Tela_IG.setLocationRelativeTo(null);       // tela no centro
                 Tela_IG.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 this.dispose();
@@ -268,7 +267,7 @@ public class Tela_Login extends javax.swing.JFrame {
 
             in.close();
 
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null,
                 "User Database Not Found", "Error",
                 JOptionPane.ERROR_MESSAGE);
