@@ -339,7 +339,6 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
 
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
-
         Pessoa cadastro = new Pessoa();
         try {
             cadastro.setNome(C1_Nome.getText());
@@ -354,18 +353,16 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         String cpf = cadastro.getCpf();
         
         ValidarCPF pf = new ValidarCPF(cpf);
-        if(pf.isCPF()){
-            if (C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos", "erro", JOptionPane.ERROR_MESSAGE); //validação de campos
-
-            } else {
-                JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
-            }
-            limpar_Campos(); // método que limpa todos os campos após click cadastro
-        }else{
+        
+        if (C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos", "erro", JOptionPane.ERROR_MESSAGE); //validação de campos
+        } else if(pf.isCPF()) {
+            JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
+        } else {
             JOptionPane.showMessageDialog(rootPane, "CPF inválido");
         }
-
+        limpar_Campos(); // método que limpa todos os campos após click cadastro
+        
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
