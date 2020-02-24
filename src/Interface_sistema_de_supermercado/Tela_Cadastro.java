@@ -27,6 +27,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
         setResizable(false); //bloqueia o maximizar 
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        Bttn1_Alterar.setVisible(false);
+
 
     }
 
@@ -303,8 +306,8 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Bttn1_Cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Bttn1_Cadastrar)
-                    .addComponent(Bttn1_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Bttn1_Alterar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Bttn1_Cadastrar))
                 .addGap(13, 13, 13))
         );
 
@@ -354,17 +357,15 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         String cpf = cadastro.getCpf();
         
         ValidarCPF pf = new ValidarCPF(cpf);
-        if(pf.isCPF()){
-            if (C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos", "erro", JOptionPane.ERROR_MESSAGE); //validação de campos
-
-            } else {
-                JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
-            }
-            limpar_Campos(); // método que limpa todos os campos após click cadastro
+        if(C1_Nome.getText().isEmpty() || C1_telefone.getText().isEmpty() || C1_CPF.getText().isEmpty() || C2_Login.getText().isEmpty() || String.valueOf(C2_Senha.getPassword()).isEmpty()){//validação de campos e checagem se o cpf é válido ou não.
+             JOptionPane.showMessageDialog(null, "Por favor preencha todos os campos","Erro", JOptionPane.ERROR_MESSAGE); 
+        }else if(pf.isCPF()){ 
+            JOptionPane.showMessageDialog(null, cadastro.cadastrarArq());
         }else{
-            JOptionPane.showMessageDialog(rootPane, "CPF inválido");
+            JOptionPane.showMessageDialog(null,"CPF invalido","erro",JOptionPane.ERROR_MESSAGE);
+        
         }
+        limpar_Campos(); // método que limpa todos os campos após click cadastro
 
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
@@ -415,6 +416,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         }catch (Exception ex) {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_Bttn1_AlterarActionPerformed
 
     private void C1_CargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_C1_CargoActionPerformed
