@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -18,23 +19,40 @@ import sistema_de_supermercado.Produto;
  */
 public class Tela_Vendas extends javax.swing.JFrame {
     String op;
+    ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     
     /*
-    public ArrayList getProd() throws FileNotFoundException{ //VER SE DA PRA APROVEITAR
-        ArrayList prod = new ArrayList();
+    public ArrayList getProd() throws FileNotFoundException{
+        ArrayList listaProd = new ArrayList();
         Scanner in = new Scanner(new File("Estoque.txt"));
         
-        while (in.hasNextLine()) { // VER A LÓGICA COM MATHEUS 
+        while (in.hasNextLine()) { //enquanto houver linha
             String s = in.nextLine();
             String[] sArray = s.split(";");
-            prod.add(sArray[0]);
-            prod.add(sArray[1]);
-            prod.add(sArray[2]);
-            prod.add(sArray[3]);
+            listaProd.add(sArray[0]); //adiciono codigo de barras
+            listaProd.add(sArray[1]); //nome do produto
+            listaProd.add(sArray[2]); //preço
+            listaProd.add(sArray[3]); //quantidade disponivel
         }
         
-        return prod;
+        return listaProd;
     }*/
+    public void CarregarTabProd() {
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
+
+        for (int i = 0; i < listaProd.size(); i++) {
+
+            Object linha[] = new Object[]{listaProd.get(i).getCodBarras(),
+                                          listaProd.get(i).getNome(),
+                                          listaProd.get(i).getPreço(),
+                                          listaProd.get(i).getQtd(),
+                                          listaProd.get(i).getSubtotal()};
+
+            modelo.addRow(linha); //Add a linha
+        }
+
+        tbl_prod.setModel(modelo);
+    }
 
     public Tela_Vendas(java.awt.Frame parent, boolean modal) {
         //super(parent, modal);
@@ -70,12 +88,12 @@ public class Tela_Vendas extends javax.swing.JFrame {
             do{ // Faça algo enquanto tiver conteudo
                 linha = br.readLine(); //Leio a linha
                 if(linha != null){ //Se for lido e diferente de null, faça:
-                    String [] palavras = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
+                    String [] sArray = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
                     
-                    if(palavras[0].equals(c_codBarras.getText())){ //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
-                        System.out.println(palavras[0] + " " + palavras[1] + " " + palavras[2] + " " + palavras[3]);
-                        c_nomeProd.setText(palavras[1]);
-                        c_preço.setText(palavras[2]);
+                    if(sArray[0].equals(c_codBarras.getText())){ //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
+                        System.out.println(sArray[0] + " " + sArray[1] + " " + sArray[2] + " " + sArray[3]);
+                        c_nomeProd.setText(sArray[1]);
+                        c_preço.setText(sArray[2]);
                     }
                 }
             } while(linha!=null);
@@ -88,6 +106,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
     
     public void addCarrinho(){
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padrão
+        ArrayList listaProd = new ArrayList();
         try {
             FileInputStream   estoque = new FileInputStream("Estoque.txt"); //Entrada pra ler
             InputStreamReader input   = new InputStreamReader(estoque); //Quem vai ler o arquivo
@@ -95,11 +114,16 @@ public class Tela_Vendas extends javax.swing.JFrame {
             String linha;
             
             linha = br.readLine(); //Leio a linha
-            
+            //PESQUISO, CASO FOR IGUAL A OQ FIVER NO CODIGO DE BARRAS, AI EU ADD AS POSICOES NO ARRAYLIST E JOGO NA TABELA
             while(linha != null){
-                String [] palavras = linha.split(";"); //Quebrar a String em varias subs quando encontrar ";"
-                if(palavras[0].equals(c_codBarras.getText())){ //Enquanto ela for diferente de null eu vou:
-                    modelo.addRow(palavras);
+                String [] sArray = linha.split(";"); //Quebrar a String em varias subs quando encontrar ";"
+                if(sArray[0].equals(c_codBarras.getText())){ //Enquanto ela for diferente de null eu vou:
+                    listaProd.add(sArray[0]);
+                    listaProd.add(sArray[1]);
+                    listaProd.add(sArray[2]);
+                    listaProd.add(c_qtd.getText());
+                    CarregarTabProd();
+                    //modelo.addRow(sArray);
                     break;
                  }else{
                     linha = br.readLine();
