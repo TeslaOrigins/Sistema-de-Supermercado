@@ -33,7 +33,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
 
     }
 
-    public void alteraFuncionario(String funcionario) throws FileNotFoundException {
+    public void alteraFuncionario(String funcionario) throws FileNotFoundException, Exception {
         Scanner in = new Scanner(new File("Cadastro.txt"));
 
         while (in.hasNextLine()) {
@@ -45,7 +45,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
                 C1_telefone.setText(sArray[1]);
                 C1_CPF.setText(sArray[2]);
                 C2_Login.setText(sArray[3]);
-                C2_Senha.setText(CriptografaSenha.decryptPasswd(sArray[4], CriptografaSenha.SECRET_KEY));
+                C2_Senha.setText(CriptografaSenha.decryptPasswd(sArray[4]));
                 C1_Cargo.addItem(sArray[5]);
                 loginAlterar = sArray[3];
             }
@@ -344,12 +344,16 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     private void Bttn1_CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CadastrarActionPerformed
 
         Pessoa cadastro = new Pessoa();
-        cadastro.setNome(C1_Nome.getText());
-        cadastro.setCel(C1_telefone.getText());
-        cadastro.setCpf(C1_CPF.getText());
-        cadastro.setLogin(C2_Login.getText());
-        cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
-        cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
+        try {
+            cadastro.setNome(C1_Nome.getText());
+            cadastro.setCel(C1_telefone.getText());
+            cadastro.setCpf(C1_CPF.getText());
+            cadastro.setLogin(C2_Login.getText());
+            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword())));
+            cadastro.setTipoUser(TipoUsuario.USUARIO_FUNCIONARIO_INT);
+        } catch (Exception ex) {
+            Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String cpf = cadastro.getCpf();
         
         ValidarCPF pf = new ValidarCPF(cpf);
@@ -402,12 +406,14 @@ public class Tela_Cadastro extends javax.swing.JFrame {
             cadastro.setCel(C1_telefone.getText());
             cadastro.setCpf(C1_CPF.getText());
             cadastro.setLogin(C2_Login.getText());
-            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword()), CriptografaSenha.SECRET_KEY));
+            cadastro.setSenha(CriptografaSenha.encryptPasswd(String.valueOf(C2_Senha.getPassword())));
             cadastro.setTipoUser(TipoUsuario.textUsuarioInt(C1_Cargo.getSelectedItem().toString()));
             cadastro.alterarArq(loginAlterar);
 
             JOptionPane.showMessageDialog(null, "Alterado com sucesso");
         } catch (IOException ex) {
+            Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
+        }catch (Exception ex) {
             Logger.getLogger(Tela_Cadastro.class.getName()).log(Level.SEVERE, null, ex);
         }
         

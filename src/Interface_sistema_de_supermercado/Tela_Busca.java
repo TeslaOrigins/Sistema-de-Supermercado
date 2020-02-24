@@ -145,19 +145,20 @@ public class Tela_Busca extends javax.swing.JFrame {
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         JOptionPane.showMessageDialog(rootPane, jList1.getSelectedValue(), "Funcionario Selecionado", JOptionPane.INFORMATION_MESSAGE);
         Tela_Cadastro Tela_C = new Tela_Cadastro();
-        //Tela_C.getBttn1_Cadastrar().setText("Alterar");
-        Tela_C.getBttn1_Cadastrar().setVisible(false);
-        Tela_C.getBttn1_Alterar().setVisible(true);
-        Tela_C.getJLabel1().setText("ALTERAR FUNCIONÁRIOS");
-        Tela_C.getT1_Cargo().setVisible(true);
-        Tela_C.getC1_Cargo().setVisible(true);
-        Tela_C.getC2_Senha().setEditable(false);        
         try {
-            Tela_C.alteraFuncionario((String)jList1.getSelectedValue());
+            Tela_C.getBttn1_Cadastrar().setVisible(false);
+            Tela_C.getBttn1_Alterar().setVisible(true);
+            Tela_C.getJLabel1().setText("ALTERAR FUNCIONÁRIOS");
+            Tela_C.getT1_Cargo().setVisible(true);
+            Tela_C.getC1_Cargo().setVisible(true);
+            Tela_C.getC2_Senha().setEditable(false);  
+            Tela_C.alteraFuncionario(jList1.getSelectedValue().toString());
+            Tela_C.setVisible(true);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Tela_Busca.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Tela_C.setVisible(true);        
+        } catch (Exception ex) {
+            Logger.getLogger(Tela_Busca.class.getName()).log(Level.SEVERE, null, ex);
+        }    
     }//GEN-LAST:event_jList1MouseClicked
 
     private void C2_identificadorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_C2_identificadorKeyReleased
