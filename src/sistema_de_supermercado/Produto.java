@@ -37,7 +37,10 @@ public class Produto {
     }
 
     public Produto(int cod, String text, double pre, int qd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.codBarras = cod;
+        this.nome = text;
+        this.preco = pre;
+        this.qtd = qd;
     }
 
     public String getNome() {
