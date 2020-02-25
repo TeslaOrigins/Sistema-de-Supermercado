@@ -44,7 +44,7 @@ public final class Tela_Vendas extends javax.swing.JFrame {
         for (int i = 0; i < listaProd.size(); i++) {
             Object linha[] = new Object[]{listaProd.get(i).getCodBarras(),
                                           listaProd.get(i).getNome(),
-                                          listaProd.get(i).getPreço(),
+                                          listaProd.get(i).getPreco(),
                                           listaProd.get(i).getQtd(),
                                           listaProd.get(i).getSubtotal()};
             modelo.addRow(linha); //Add a linha
@@ -567,7 +567,7 @@ public final class Tela_Vendas extends javax.swing.JFrame {
             Produto P = listaProd.get(index);
             c_codBarras.setText(String.valueOf(P.getCodBarras()));
             c_nomeProd.setText(P.getNome());
-            c_preço.setText(String.valueOf(P.getPreço()));
+            c_preço.setText(String.valueOf(P.getPreco()));
             op = "Remover";
             ManipularInterface();
         }
