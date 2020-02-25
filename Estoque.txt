@@ -7,3 +7,4 @@
 7;Nescau 2.0;14.9;40
 8;Peito de Frango;14.0;30
 9;Leite La Serenissima;4.5;80
+10;Lamborghini Aventador;4700000.0;5

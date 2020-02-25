@@ -30,7 +30,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
 
             Object linha[] = new Object[]{listaProd.get(i).getCodBarras(),
                 listaProd.get(i).getNome(),
-                listaProd.get(i).getPreço(),
+                listaProd.get(i).getPreco(),
                 listaProd.get(i).getQtd(),
                 listaProd.get(i).getSubtotal()};
 
