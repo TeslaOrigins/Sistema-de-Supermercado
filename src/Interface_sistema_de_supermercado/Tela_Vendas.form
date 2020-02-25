@@ -193,7 +193,7 @@
                           <Table columnCount="5" rowCount="0">
                             <Column editable="false" title="C&#xf3;digo" type="java.lang.Integer"/>
                             <Column editable="false" title="Produto" type="java.lang.Object"/>
-                            <Column editable="false" title="Pre&#xe7;o" type="java.lang.Double"/>
+                            <Column editable="false" title="Pre&#xe7;o" type="java.lang.Object"/>
                             <Column editable="false" title="Qtd" type="java.lang.Integer"/>
                             <Column editable="false" title="Subtotal" type="java.lang.Double"/>
                           </Table>
