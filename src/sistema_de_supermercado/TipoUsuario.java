@@ -40,7 +40,7 @@ public class TipoUsuario {
         return null;
     }
     
-    public static Integer textUsuarioInt(String s){
+     public static Integer textUsuarioInt(String s){
         if(s.toLowerCase().equals(USUARIO_FUNCIONARIO_STRING) || s.equals(usuarioFuncionarioToString())){
             return USUARIO_FUNCIONARIO_INT;
         }    
@@ -49,8 +49,8 @@ public class TipoUsuario {
         }
         if(s.toLowerCase().equals(USUARIO_CHEFE_STRING) || s.equals(usuarioChefeToString())){
             return USUARIO_CHEFE_INT;
-        }
+        } 
         
         return null;
-    }
+    } 
 }

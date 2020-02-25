@@ -18,7 +18,23 @@ import sistema_de_supermercado.Produto;
  *
  * @author Paulo
  */
+
 public final class Tela_Vendas extends javax.swing.JFrame {
+    
+    ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
+    String op;
+    
+    
+    public void CarregarTabProd() {
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
+        
+        for (int i = 0; i < listaProd.size(); i++) {
+
+            Object linha[] = new Object[]{listaProd.get(i).getCodBarras(),
+                                          listaProd.get(i).getNome(),
+                                          listaProd.get(i).getPreco(),
+                                          listaProd.get(i).getQtd(),
+                                          listaProd.get(i).getSubtotal()};
 
     String op;
     ArrayList<Produto> listaProd = new ArrayList<>(); //Criando um ArrayList para os produtos (uma lista de produtos)
