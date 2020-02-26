@@ -24,7 +24,20 @@ public class Tela_Pagamento extends javax.swing.JFrame {
     public void exportarPag(Produto pay) {
         c_total.setText(pay.getTotPagamento());
     }
-
+    public void metodoPag(){
+        /*double din = Double.parseDouble(c_dinheiro.getText());
+        double cart = Double.parseDouble(c_dinheiro.getText());
+        double tot = Double.parseDouble(c_total.getText());*/
+        if (Double.parseDouble(c_dinheiro.getText()) >= Double.parseDouble(c_total.getText())) {
+            JOptionPane.showMessageDialog(null, "Compra Realizada com sucesso!", "Venda", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }else if(Double.parseDouble(c_cartao.getText()) >= Double.parseDouble(c_total.getText())){
+            JOptionPane.showMessageDialog(null, "Compra Realizada com sucesso!", "Venda", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Valor inserido é abaixo do esperado.", "Venda", JOptionPane.ERROR_MESSAGE);     
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -189,25 +202,17 @@ public class Tela_Pagamento extends javax.swing.JFrame {
     private void jB_DinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DinheiroActionPerformed
         c_dinheiro.setEnabled(true);
         c_cartao.setEnabled(false);
-        c_cartao.setText("");
+        c_cartao.setText("0");
     }//GEN-LAST:event_jB_DinheiroActionPerformed
 
     private void jB_CartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_CartaoActionPerformed
         c_dinheiro.setEnabled(false);
         c_cartao.setEnabled(true);
-        c_dinheiro.setText("");
+        c_dinheiro.setText("0");
     }//GEN-LAST:event_jB_CartaoActionPerformed
 
     private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
-        double din = Double.parseDouble(c_dinheiro.getText());
-        double cart = Double.parseDouble(c_dinheiro.getText());
-        double tot = Double.parseDouble(c_total.getText());
-        if (din >= tot || cart >= tot) {
-            JOptionPane.showMessageDialog(null, "Compra Realizada com sucesso!", "Venda", JOptionPane.INFORMATION_MESSAGE);
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Valor inserido é abaixo do esperado.", "Venda", JOptionPane.ERROR_MESSAGE);     
-        }
+        metodoPag();
     }//GEN-LAST:event_btn_finalizarActionPerformed
 
     /**
