@@ -575,7 +575,11 @@ public final class Tela_Vendas extends javax.swing.JFrame {
     }//GEN-LAST:event_tbl_prodMouseClicked
 
     private void btn_pagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagActionPerformed
-        
+        this.dispose(); //Encerra a compra e fecha
+        Tela_Pagamento Tela_P = new Tela_Pagamento(); //Instancia tela pag
+        Tela_P.setVisible(true);             //Mostrar tela pag 
+        Tela_P.setLocationRelativeTo(null);     //Centro
+        Tela_P.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_btn_pagActionPerformed
 
     /**
