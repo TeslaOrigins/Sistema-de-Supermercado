@@ -1,12 +1,9 @@
 package Interface_sistema_de_supermercado;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -50,7 +47,6 @@ public final class Tela_Vendas extends javax.swing.JFrame {
         setResizable(false);
         initComponents();
         this.setLocationRelativeTo(null);
-        //listaProd = new ArrayList<>();
         op = "Navegar";
         ManipularInterface();
         c_totalPag.setEnabled(false);
@@ -153,8 +149,6 @@ public final class Tela_Vendas extends javax.swing.JFrame {
                 btn_remover.setEnabled(false);
                 btn_pag.setEnabled(false);
                 btn_cancel.setEnabled(false);
-                //c_nomeProd.setEnabled(false);
-                //c_preço.setEnabled(false);
                 c_qtd.setEnabled(true);
                 break;
             case "Pesquisar":
@@ -288,6 +282,11 @@ public final class Tela_Vendas extends javax.swing.JFrame {
         btn_pag.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_pag.setForeground(new java.awt.Color(255, 255, 255));
         btn_pag.setText("PAGAMENTO");
+        btn_pag.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pagActionPerformed(evt);
+            }
+        });
 
         btn_cancel.setBackground(new java.awt.Color(102, 0, 0));
         btn_cancel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -561,6 +560,17 @@ public final class Tela_Vendas extends javax.swing.JFrame {
             ManipularInterface();
         }
     }//GEN-LAST:event_tbl_prodMouseClicked
+
+    private void btn_pagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagActionPerformed
+        this.dispose(); //Encerra a compra e fecha
+        Produto pagamento = new Produto();
+        pagamento.setTotPagamento(c_totalPag.getText());
+        Tela_Pagamento Tela_P = new Tela_Pagamento(); //Instancia tela pag
+        Tela_P.exportarPag(pagamento);
+        Tela_P.setVisible(true);             //Mostrar tela pag 
+        Tela_P.setLocationRelativeTo(null);     //Centro
+        Tela_P.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_btn_pagActionPerformed
 
     /**
      * @param args the command line arguments
