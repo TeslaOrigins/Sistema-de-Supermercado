@@ -370,6 +370,7 @@ public class Tela_Cadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_Bttn1_CadastrarActionPerformed
 
     private void Bttn1_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn1_CancelarActionPerformed
+      
         Tela_Login Tela_L = new Tela_Login(); //chama a tela de cadastro
         Tela_L.setVisible(true);             // serve para mostrar o Jframe na tela
         Tela_L.setLocationRelativeTo(null);     // tela no centro

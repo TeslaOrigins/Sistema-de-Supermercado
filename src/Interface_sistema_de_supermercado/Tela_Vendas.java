@@ -21,7 +21,9 @@ public class Tela_Vendas extends javax.swing.JFrame {
     
     ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
-    
+     Background b= new Background();
+     
+  
     
     public void CarregarTabProd() {
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
@@ -65,7 +67,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
         c_totalPag.setEnabled(false);
         c_nomeProd.setEnabled(false);
         c_preço.setEnabled(false);
-        setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
+        this.setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
     }
 
     /**
@@ -74,10 +76,10 @@ public class Tela_Vendas extends javax.swing.JFrame {
     public Tela_Vendas() {
         setResizable(false);
         initComponents();
-        setLocationRelativeTo(null); //Janela no centro da tela
+        this.setLocationRelativeTo(null); //Janela no centro da tela
         c_totalPag.setEnabled(false);
         c_nomeProd.setEnabled(false);
-        setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
+       this.setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
 
 
     }
@@ -348,7 +350,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btn_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                        .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -440,7 +442,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(262, 262, 262)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
