@@ -1,10 +1,10 @@
-1;Air Jordan 5 Retro;1099;20
-2;Nike;300.0;21
-3;Miojo Nissin;1.96;100
-4;Mi 9 Lite;1599.99;3
-5;Arroz Dalon;3.65;200
-6;Mi Band 4;260.0;3
-7;Nescau 2.0;14.9;40
-8;Peito de Frango;14.0;30
-9;Leite La Serenissima;4.5;80
-10;Macarrão;3.6;100
+1;air Jordan 5 Retro;1099;20
+2;nike;300.0;21
+3;miojo Nissin;1.96;100
+4;mi 9 Lite;1599.99;3
+5;arroz Dalon;3.65;200
+6;mi Band 4;260.0;3
+7;nescau 2.0;14.9;40
+8;peito de Frango;14.0;30
+9;leite La Serenissima;4.5;80
+10;macarrão;3.6;100
