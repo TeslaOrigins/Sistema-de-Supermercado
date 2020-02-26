@@ -16,7 +16,7 @@ public class Atendente {
     }
     
     public void setCliente(Cliente c){
-        this.c = c;
+        this.c=c;
     }
     
     public Cliente getCliente(){

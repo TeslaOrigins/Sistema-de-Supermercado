@@ -23,22 +23,6 @@ public final class Tela_Vendas extends javax.swing.JFrame {
     String op;
     ArrayList<Produto> listaProd = new ArrayList<>(); //Criando um ArrayList para os produtos (uma lista de produtos)
 
-    /*
-    public ArrayList getProd() throws FileNotFoundException{
-        ArrayList listaProd = new ArrayList();
-        Scanner in = new Scanner(new File("Estoque.txt"));
-        
-        while (in.hasNextLine()) { //enquanto houver linha
-            String s = in.nextLine();
-            String[] sArray = s.split(";");
-            listaProd.add(sArray[0]); //adiciono codigo de barras
-            listaProd.add(sArray[1]); //nome do produto
-            listaProd.add(sArray[2]); //preço
-            listaProd.add(sArray[3]); //quantidade disponivel
-        }
-        
-        return listaProd;
-    }*/
     public void CarregarTabProd() {
         DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Produto", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padrão
         for (int i = 0; i < listaProd.size(); i++) {
@@ -72,18 +56,23 @@ public final class Tela_Vendas extends javax.swing.JFrame {
         c_totalPag.setEnabled(false);
         c_nomeProd.setEnabled(false);
         c_preço.setEnabled(false);
+        this.setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
     }
 
     /**
      * Creates new form Tela_Interna_Funcionario
      */
     public Tela_Vendas() {
-        setResizable(false);  
-        //listaProd = new ArrayList<>();
+        Background b= new Background();
+        setResizable(false);
+        b.setVisible(true);
         initComponents();
         this.setLocationRelativeTo(null); //Janela no centro da tela
         c_totalPag.setEnabled(false);
         c_nomeProd.setEnabled(false);
+       this.setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
+
+
     }
 
     public void pesquisaEst() {
@@ -407,7 +396,7 @@ public final class Tela_Vendas extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btn_add)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE))
+                        .addComponent(btn_remover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -499,7 +488,7 @@ public final class Tela_Vendas extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(262, 262, 262)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

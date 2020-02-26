@@ -23,9 +23,11 @@ public class Tela_Estoque extends javax.swing.JFrame {
     String op;
 
     public Tela_Estoque() {
+        Background b= new Background();
         initComponents();
-        this.setLocationRelativeTo(null); //ela no centro
+        setLocationRelativeTo(null); //ela no centro
         setResizable(false); // bloqueia o maximizar 
+        setDefaultCloseOperation( Tela_Estoque.DISPOSE_ON_CLOSE );
         startTable();
     }
 
