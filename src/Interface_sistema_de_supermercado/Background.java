@@ -26,7 +26,7 @@ public class Background extends javax.swing.JFrame {
         this.setSize(getMaximumSize());
         setLocationRelativeTo(null);
         setResizable(false);
-        setVisible(true);
+        setVisible(false);
         
     }
 
@@ -173,7 +173,7 @@ public class Background extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Tela_Vendas tv;
         tv= new Tela_Vendas();
-         tv.setVisible(true);
+        tv.setVisible(true);
         tv.setLocationRelativeTo(null);
         tv.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.dispose();
@@ -211,7 +211,7 @@ public class Background extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Background().setVisible(true);
+                new Background().setVisible(false);
             }
         });
     }

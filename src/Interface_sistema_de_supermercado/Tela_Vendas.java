@@ -21,8 +21,6 @@ public class Tela_Vendas extends javax.swing.JFrame {
     
     ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
-     Background b= new Background();
-     
   
     
     public void CarregarTabProd() {
@@ -57,7 +55,6 @@ public class Tela_Vendas extends javax.swing.JFrame {
 
     public Tela_Vendas(java.awt.Frame parent, boolean modal) {
         //super(parent, modal);
-        Background b= new Background();
         setResizable(false);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -74,7 +71,9 @@ public class Tela_Vendas extends javax.swing.JFrame {
      * Creates new form Tela_Interna_Funcionario
      */
     public Tela_Vendas() {
+        Background b= new Background();
         setResizable(false);
+        b.setVisible(true);
         initComponents();
         this.setLocationRelativeTo(null); //Janela no centro da tela
         c_totalPag.setEnabled(false);
