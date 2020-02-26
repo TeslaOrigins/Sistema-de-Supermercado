@@ -27,7 +27,9 @@ public class Tela_Cadastro extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null); //ela no centro
         setResizable(false); //bloqueia o maximizar 
-
+        Bttn1_Alterar.setVisible(false);
+        C1_Cargo.setVisible(false);
+        T1_Cargo.setVisible(false);
     }
 
     public void alteraFuncionario(String funcionario) throws FileNotFoundException, Exception {
