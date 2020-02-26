@@ -5,8 +5,12 @@
  */
 package Interface_sistema_de_supermercado;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import sistema_de_supermercado.Produto;
 
 /**
@@ -15,7 +19,7 @@ import sistema_de_supermercado.Produto;
  */
 public class Tela_Estoque extends javax.swing.JFrame {
 
-    ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
+    ArrayList<Produto> listaProd = new ArrayList<Produto>(); //Criando um ArrayList para os produtos (uma lista de produtos)
     String op;
 
     public Tela_Estoque() {
@@ -24,7 +28,7 @@ public class Tela_Estoque extends javax.swing.JFrame {
         setLocationRelativeTo(null); //ela no centro
         setResizable(false); // bloqueia o maximizar 
         setDefaultCloseOperation( Tela_Estoque.DISPOSE_ON_CLOSE );
-
+        startTable();
     }
 
     /**
@@ -341,10 +345,11 @@ public class Tela_Estoque extends javax.swing.JFrame {
     }//GEN-LAST:event_C_PreçoActionPerformed
 
     private void Bttn_NovoProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Bttn_NovoProdActionPerformed
+        addRowToJtable();
         Produto estoque = new Produto();
         estoque.setCodBarras(Integer.parseInt(c_codBarras.getText()));
         estoque.setNome(c_nomeProd.getText());
-        estoque.setPreço(Double.parseDouble(c_preço.getText()));
+        estoque.setPreco(Double.parseDouble(c_preço.getText()));
         estoque.setQtd(Integer.parseInt(c_qtd.getText()));
 
         if (c_codBarras.getText().isEmpty()|| c_nomeProd.getText().isEmpty() || c_preço.getText().isEmpty() || c_qtd.getText().isEmpty()) {
@@ -363,6 +368,53 @@ public class Tela_Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Bttn_SalvarActionPerformed
 
+    public void startTable(){
+        Scanner in;
+        DefaultTableModel model = (DefaultTableModel) tbl_prod1.getModel();
+        try{
+            in = new Scanner(new File("Estoque.txt"));
+            while(in.hasNextLine()){
+                String s = in.nextLine();
+                String[] sArray = s.split(";");
+
+                listaProd.add(new Produto(Integer.parseInt(sArray[0]), sArray[1], Double.parseDouble(sArray[2]), Integer.parseInt(sArray[3])));
+            }
+        } catch(FileNotFoundException | NullPointerException ex){
+            System.out.println("Erro: " + ex);
+        }
+        Object rowData[] = new Object[5];
+        for(int i = 0; i < listaProd.size(); i++){
+            rowData[0] = listaProd.get(i).getCodBarras();
+            rowData[1] = listaProd.get(i).getNome();
+            rowData[2] = listaProd.get(i).getPreco();
+            rowData[3] = listaProd.get(i).getQtd();
+            rowData[4] = listaProd.get(i).getPreco() * listaProd.get(i).getQtd();
+            model.addRow(rowData);
+        } 
+    }
+    
+    public ArrayList listProd(){
+        try{
+            listaProd.add(new Produto(Integer.parseInt(c_codBarras.getText()), c_nomeProd.getText(), Double.parseDouble(c_preço.getText()), Integer.parseInt(c_qtd.getText())));
+        } catch(NumberFormatException ex){
+            System.out.println("Erro: " + ex);
+        }
+        
+        return  listaProd;
+    }
+    
+    public void addRowToJtable(){
+        DefaultTableModel model = (DefaultTableModel) tbl_prod1.getModel();
+        ArrayList<Produto> list = listProd();
+        Object rowData[] = new Object[5];
+        rowData[0] = Integer.parseInt(c_codBarras.getText());
+        rowData[1] = c_nomeProd.getText();
+        rowData[2] = Double.parseDouble(c_preço.getText());
+        rowData[3] = Integer.parseInt(c_qtd.getText());
+        rowData[4] = (Double.parseDouble(c_preço.getText()) * Integer.parseInt(c_qtd.getText()));
+        model.addRow(rowData);
+    }
+    
     /**
      * @param args the command line arguments
      */

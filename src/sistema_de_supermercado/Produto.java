@@ -17,17 +17,17 @@ public class Produto {
 
     private int codBarras;
     private String nome;
-    private double preço;
+    private double preco;
     private int qtd;
     private double subtotal;
 
     public Produto() {
     }
 
-    public Produto(int codBarras, String nome, double preço, int qtd, double subtotal) {
+    public Produto(int codBarras, String nome, double preco, int qtd, double subtotal) {
         this.codBarras = codBarras;
         this.nome = nome;
-        this.preço = preço;
+        this.preco = preco;
         this.qtd = qtd;
         this.subtotal = subtotal;
     }
@@ -37,7 +37,10 @@ public class Produto {
     }
 
     public Produto(int cod, String text, double pre, int qd) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.codBarras = cod;
+        this.nome = text;
+        this.preco = pre;
+        this.qtd = qd;
     }
 
     public String getNome() {
@@ -48,12 +51,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPreço() {
-        return preço;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPreço(double preço) {
-        this.preço = preço;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public int getCodBarras() {
@@ -73,7 +76,7 @@ public class Produto {
     }
 
     public double getSubtotal() {
-        return (preço * qtd);
+        return (preco * qtd);
     }
 
     public void setSubtotal(double subtotal) {
@@ -84,7 +87,7 @@ public class Produto {
         try {                                                   //Famoso TryCatch, caso dê erro na execução
             FileWriter fw = new FileWriter("Estoque.txt", true); //Recebe o objeto que é o Estoque e escreve no arquivo
             PrintWriter pw = new PrintWriter(fw);               //Quase a mesma coisa, vai entender
-            pw.println(this.codBarras + ";" + this.nome + ";" + this.preço + ";" + this.qtd); //Escreve cada um em cada um
+            pw.println(this.codBarras + ";" + this.nome + ";" + this.preco + ";" + this.qtd); //Escreve cada um em cada um
             pw.flush();                                       //Grava o conteúdo do buffer no destino
             pw.close();                                      //Fecha o fluxo permanente e libera recursos
             fw.close();

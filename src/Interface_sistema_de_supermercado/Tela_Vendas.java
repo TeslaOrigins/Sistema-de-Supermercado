@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sistema_de_supermercado.Produto;
 
@@ -17,40 +18,31 @@ import sistema_de_supermercado.Produto;
  *
  * @author Paulo
  */
-public class Tela_Vendas extends javax.swing.JFrame {
-    
-    ArrayList<Produto> listaProd; //Criando um ArrayList para os produtos (uma lista de produtos)
+public final class Tela_Vendas extends javax.swing.JFrame {
+
     String op;
-  
-    
+    ArrayList<Produto> listaProd = new ArrayList<>(); //Criando um ArrayList para os produtos (uma lista de produtos)
+
     public void CarregarTabProd() {
-        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Nome", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padraõ
-        
+        DefaultTableModel modelo = new DefaultTableModel(new Object[]{"Código", "Produto", "Preço", "Qtd", "Subtotal"}, 0); //Modelagem de tabela padrão
         for (int i = 0; i < listaProd.size(); i++) {
-
             Object linha[] = new Object[]{listaProd.get(i).getCodBarras(),
-                listaProd.get(i).getNome(),
-                listaProd.get(i).getPreço(),
-                listaProd.get(i).getQtd(),
-                listaProd.get(i).getSubtotal()};
-
+                                          listaProd.get(i).getNome(),
+                                          listaProd.get(i).getPreco(),
+                                          listaProd.get(i).getQtd(),
+                                          listaProd.get(i).getSubtotal()};
             modelo.addRow(linha); //Add a linha
         }
-
         tbl_prod.setModel(modelo);
-    }
-    
-    public ArrayList getProd() throws FileNotFoundException{ //VER SE DA PRA APROVEITAR
-        ArrayList prod = new ArrayList();
-        Scanner in = new Scanner(new File("Estoque.txt"));
-        
-        while (in.hasNextLine()) { /* VER A LÓGICA COM MATHEUS */
-            String s = in.nextLine();
-            String[] sArray = s.split(";");
-            prod.add(sArray[0]);
-        }
-        
-        return prod;
+        tbl_prod.getColumnModel().getColumn(0).setResizable(false);
+        tbl_prod.getColumnModel().getColumn(0).setPreferredWidth(40);
+        tbl_prod.getColumnModel().getColumn(1).setResizable(false);
+        tbl_prod.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tbl_prod.getColumnModel().getColumn(2).setResizable(false);
+        tbl_prod.getColumnModel().getColumn(2).setPreferredWidth(50);
+        tbl_prod.getColumnModel().getColumn(3).setResizable(false);
+        tbl_prod.getColumnModel().getColumn(3).setPreferredWidth(20);
+        tbl_prod.getColumnModel().getColumn(4).setResizable(false);
     }
 
     public Tela_Vendas(java.awt.Frame parent, boolean modal) {
@@ -58,7 +50,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
         setResizable(false);
         initComponents();
         this.setLocationRelativeTo(null);
-        listaProd = new ArrayList();
+        //listaProd = new ArrayList<>();
         op = "Navegar";
         ManipularInterface();
         c_totalPag.setEnabled(false);
@@ -83,6 +75,77 @@ public class Tela_Vendas extends javax.swing.JFrame {
 
     }
 
+    public void pesquisaEst() {
+        try {
+            FileInputStream estoque = new FileInputStream("Estoque.txt"); //Entrada pra ler
+            InputStreamReader input = new InputStreamReader(estoque); //Quem vai ler o arquivo
+            BufferedReader br = new BufferedReader(input); //Ler linha por linha (função readLine) até encontrar o \n
+            String linha;
+
+            do { // Faça algo enquanto tiver conteudo
+                linha = br.readLine(); //Leio a linha
+                if (linha != null) { //Se for lido e diferente de null, faça:
+                    String[] sArray = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
+
+                    if (sArray[0].equals(c_codBarras.getText())) { //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
+                        System.out.println(sArray[0] + " " + sArray[1] + " " + sArray[2] + " " + sArray[3]);
+                        c_nomeProd.setText(sArray[1]);
+                        c_preço.setText(sArray[2]);
+                    }
+                }
+            } while (linha != null);
+
+        } catch (Exception e) {
+            Logger.getLogger(Tela_Vendas.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }
+
+    public void addCarrinho() {
+        try {
+            FileInputStream estoque = new FileInputStream("Estoque.txt"); //Entrada pra ler
+            InputStreamReader input = new InputStreamReader(estoque); //Quem vai ler o arquivo
+            BufferedReader br = new BufferedReader(input); //Ler linha por linha (função readLine) até encontrar o \n
+            String linha;
+            int quant = 0;
+            do { // Faça algo enquanto tiver conteudo
+                linha = br.readLine(); //Leio a linha
+                if (linha != null) { //Se for lido e diferente de null, faça:
+                    String[] sArray = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
+                    if (sArray[0].equals(c_codBarras.getText())) { //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
+                        quant = Integer.parseInt(sArray[3]);
+                    }
+                }
+            } while (linha != null);
+            if (Integer.parseInt(c_qtd.getText()) <= quant) {
+                int cod = Integer.parseInt(c_codBarras.getText());
+                double pre = Double.parseDouble(c_preço.getText());
+                int qd = Integer.parseInt(c_qtd.getText());
+                Produto P = new Produto(cod, c_nomeProd.getText(), pre, qd, qd * pre);
+                listaProd.add(P);
+            } else {
+                JOptionPane.showMessageDialog(null, "Não temos essa quantidade em estoque.", "Requisição Inválida", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            Logger.getLogger(Tela_Vendas.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }
+
+    public double somarValores() {
+        double somaTotal = 0;
+        try {
+            for (int i = 0; i < tbl_prod.getRowCount(); i++) {
+                somaTotal += Double.parseDouble(tbl_prod.getValueAt(i, 4).toString());
+                //c_totalPag.setText("" + somaTotal);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Erro ao somar: " + e.getMessage());
+        }
+    return somaTotal;
+    }
+
     public void ManipularInterface() {
         switch (op) {
             case "Navegar":
@@ -90,11 +153,11 @@ public class Tela_Vendas extends javax.swing.JFrame {
                 btn_remover.setEnabled(false);
                 btn_pag.setEnabled(false);
                 btn_cancel.setEnabled(false);
-                c_nomeProd.setEnabled(false);
-                c_preço.setEnabled(false);
+                //c_nomeProd.setEnabled(false);
+                //c_preço.setEnabled(false);
                 c_qtd.setEnabled(true);
                 break;
-            case "Pesquisar": //Liberando o NOME E PRECO pra teste
+            case "Pesquisar":
                 btn_add.setEnabled(true);
                 btn_remover.setEnabled(false);
                 btn_pag.setEnabled(false);
@@ -178,7 +241,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -246,11 +309,6 @@ public class Tela_Vendas extends javax.swing.JFrame {
 
         c_totalPag.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         c_totalPag.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        c_totalPag.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_totalPagActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -280,12 +338,6 @@ public class Tela_Vendas extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Código:");
 
-        c_codBarras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_codBarrasActionPerformed(evt);
-            }
-        });
-
         btn_pesquisar.setText(" Pesquisar");
         btn_pesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,11 +364,6 @@ public class Tela_Vendas extends javax.swing.JFrame {
         jLabel5.setText("Preço:");
 
         c_nomeProd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        c_nomeProd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                c_nomeProdActionPerformed(evt);
-            }
-        });
 
         c_preço.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
@@ -468,53 +515,21 @@ public class Tela_Vendas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void c_codBarrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_codBarrasActionPerformed
-
-    }//GEN-LAST:event_c_codBarrasActionPerformed
-
     private void btn_pesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pesquisarActionPerformed
         op = "Pesquisar";
         ManipularInterface();
-        
-        try {
-            FileInputStream   estoque = new FileInputStream("Estoque.txt"); //Entrada pra ler
-            InputStreamReader input   = new InputStreamReader(estoque); //Quem vai ler o arquivo
-            BufferedReader    br      = new BufferedReader(input); //Ler linha por linha (função readLine) até encontrar o \n
-            String linha;
-                       
-            do{ // Faça algo enquanto tiver conteudo
-                linha = br.readLine(); //Leio a linha
-                if(linha != null){ //Se for lido e diferente de null, faça:
-                    String [] palavras = linha.split(";"); //Dividir a linha de acordo com o ; encontrado
-                    
-                    if(palavras[0].equals(c_codBarras.getText())){ //Se a String palavras na posição 0 for igual ao lido no campo do codigoB
-                    System.out.println(palavras[0] + " " + palavras[1] + " " + palavras[2] + " " + palavras[3]);
-                    c_nomeProd.setText(palavras[1]);
-                    c_preço.setText(palavras[2]);
-                    }
-                }
-            } while(linha!=null);
-            
-        } catch (Exception e) {
-            Logger.getLogger(Tela_Vendas.class.getName()).log(Level.SEVERE, null, e);
-        }        
-        
+        pesquisaEst();
+
     }//GEN-LAST:event_btn_pesquisarActionPerformed
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         op = "Adicionar";
         ManipularInterface();
-        int cod = Integer.parseInt(c_codBarras.getText());
-        double pre = Integer.parseInt(c_preço.getText());
-        int qd = Integer.parseInt(c_qtd.getText());
-        Produto P = new Produto(cod, c_nomeProd.getText(), pre, qd, qd * pre);
-        listaProd.add(P);
+        addCarrinho();
         CarregarTabProd();
+        c_totalPag.setText("" +somarValores());
+
     }//GEN-LAST:event_btn_addActionPerformed
-
-    private void c_nomeProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_nomeProdActionPerformed
-
-    }//GEN-LAST:event_c_nomeProdActionPerformed
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         this.dispose(); //Encerra a compra e fecha
@@ -530,8 +545,9 @@ public class Tela_Vendas extends javax.swing.JFrame {
             listaProd.remove(index);
         }
         CarregarTabProd();
+        c_totalPag.setText("" +somarValores());
         op = "Navegar";
-        ManipularInterface();            
+        ManipularInterface();
     }//GEN-LAST:event_btn_removerActionPerformed
 
     private void tbl_prodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_prodMouseClicked
@@ -540,14 +556,11 @@ public class Tela_Vendas extends javax.swing.JFrame {
             Produto P = listaProd.get(index);
             c_codBarras.setText(String.valueOf(P.getCodBarras()));
             c_nomeProd.setText(P.getNome());
+            c_preço.setText(String.valueOf(P.getPreco()));
             op = "Remover";
             ManipularInterface();
         }
     }//GEN-LAST:event_tbl_prodMouseClicked
-
-    private void c_totalPagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_c_totalPagActionPerformed
-        
-    }//GEN-LAST:event_c_totalPagActionPerformed
 
     /**
      * @param args the command line arguments
