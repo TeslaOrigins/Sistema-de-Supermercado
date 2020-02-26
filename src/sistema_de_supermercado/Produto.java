@@ -20,6 +20,7 @@ public class Produto {
     private double preco;
     private int qtd;
     private double subtotal;
+    private String totPagamento; //Criado para fazer exportação do Pagamento total
 
     public Produto() {
     }
@@ -81,6 +82,14 @@ public class Produto {
 
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public String getTotPagamento() {
+        return totPagamento;
+    }
+
+    public void setTotPagamento(String totPagamento) {
+        this.totPagamento = totPagamento;
     }
 
     public String cadastrarEst() {
