@@ -20,6 +20,7 @@ import javax.swing.ListSelectionModel;
  * @author Tesla
  */
 public class Tela_Busca extends javax.swing.JFrame {
+    
 
     DefaultListModel defaultListModel = new DefaultListModel();
     
@@ -28,8 +29,13 @@ public class Tela_Busca extends javax.swing.JFrame {
      */
     public Tela_Busca() throws FileNotFoundException {
         initComponents();
+        Background b= new Background();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
         this.bindData(); //adiciona elementos na lista da tela
-        this.setLocationRelativeTo(null); //ela no centro
+        setLocationRelativeTo(null); //ela no centro
+        setDefaultCloseOperation( Tela_Busca.DISPOSE_ON_CLOSE );
     }
     
     public ArrayList getFuncionarios() throws FileNotFoundException{

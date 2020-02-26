@@ -55,6 +55,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
 
     public Tela_Vendas(java.awt.Frame parent, boolean modal) {
         //super(parent, modal);
+        Background b= new Background();
         setResizable(false);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -64,6 +65,7 @@ public class Tela_Vendas extends javax.swing.JFrame {
         c_totalPag.setEnabled(false);
         c_nomeProd.setEnabled(false);
         c_preço.setEnabled(false);
+        setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
     }
 
     /**
@@ -72,9 +74,12 @@ public class Tela_Vendas extends javax.swing.JFrame {
     public Tela_Vendas() {
         setResizable(false);
         initComponents();
-        this.setLocationRelativeTo(null); //Janela no centro da tela
+        setLocationRelativeTo(null); //Janela no centro da tela
         c_totalPag.setEnabled(false);
         c_nomeProd.setEnabled(false);
+        setDefaultCloseOperation(Tela_Vendas.DISPOSE_ON_CLOSE );
+
+
     }
 
     public void ManipularInterface() {
