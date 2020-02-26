@@ -1,5 +1,8 @@
 package Interface_sistema_de_supermercado;
 
+import javax.swing.JOptionPane;
+import sistema_de_supermercado.Produto;
+
 /**
  *
  * @author Paulo
@@ -15,6 +18,11 @@ public class Tela_Pagamento extends javax.swing.JFrame {
         initComponents();
         c_dinheiro.setEnabled(false);
         c_cartao.setEnabled(false);
+        c_total.setEnabled(false);
+    }
+
+    public void exportarPag(Produto pay) {
+        c_total.setText(pay.getTotPagamento());
     }
 
     /**
@@ -32,15 +40,13 @@ public class Tela_Pagamento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         c_dinheiro = new javax.swing.JTextField();
         c_cartao = new javax.swing.JTextField();
-        c_troco = new javax.swing.JTextField();
-        c_totalPag = new javax.swing.JTextField();
+        c_total = new javax.swing.JTextField();
         jB_Dinheiro = new javax.swing.JRadioButton();
-        jB_Cartão = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        jB_Cartao = new javax.swing.JRadioButton();
+        btn_finalizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,13 +84,12 @@ public class Tela_Pagamento extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CARTÃO:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("TROCO:");
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("TOTAL:");
+
+        c_total.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        c_total.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jB_Dinheiro.setBackground(new java.awt.Color(44, 62, 80));
         btn_Group.add(jB_Dinheiro);
@@ -97,21 +102,26 @@ public class Tela_Pagamento extends javax.swing.JFrame {
             }
         });
 
-        jB_Cartão.setBackground(new java.awt.Color(44, 62, 80));
-        btn_Group.add(jB_Cartão);
-        jB_Cartão.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jB_Cartão.setForeground(new java.awt.Color(255, 255, 255));
-        jB_Cartão.setText("Cartão");
-        jB_Cartão.addActionListener(new java.awt.event.ActionListener() {
+        jB_Cartao.setBackground(new java.awt.Color(44, 62, 80));
+        btn_Group.add(jB_Cartao);
+        jB_Cartao.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jB_Cartao.setForeground(new java.awt.Color(255, 255, 255));
+        jB_Cartao.setText("Cartão");
+        jB_Cartao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jB_CartãoActionPerformed(evt);
+                jB_CartaoActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 102, 0));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("FINALIZAR");
+        btn_finalizar.setBackground(new java.awt.Color(0, 102, 0));
+        btn_finalizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_finalizar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_finalizar.setText("FINALIZAR");
+        btn_finalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_finalizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,7 +132,6 @@ public class Tela_Pagamento extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,16 +139,15 @@ public class Tela_Pagamento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(c_dinheiro, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                     .addComponent(c_cartao)
-                    .addComponent(c_troco)
-                    .addComponent(c_totalPag))
+                    .addComponent(c_total))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jB_Dinheiro)
-                            .addComponent(jB_Cartão))
+                            .addComponent(jB_Cartao))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_finalizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,18 +163,13 @@ public class Tela_Pagamento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(c_cartao, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jB_Cartão))
+                    .addComponent(jB_Cartao))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(c_troco, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(c_totalPag, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(c_total, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_finalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,12 +189,26 @@ public class Tela_Pagamento extends javax.swing.JFrame {
     private void jB_DinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_DinheiroActionPerformed
         c_dinheiro.setEnabled(true);
         c_cartao.setEnabled(false);
+        c_cartao.setText("");
     }//GEN-LAST:event_jB_DinheiroActionPerformed
 
-    private void jB_CartãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_CartãoActionPerformed
+    private void jB_CartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB_CartaoActionPerformed
         c_dinheiro.setEnabled(false);
         c_cartao.setEnabled(true);
-    }//GEN-LAST:event_jB_CartãoActionPerformed
+        c_dinheiro.setText("");
+    }//GEN-LAST:event_jB_CartaoActionPerformed
+
+    private void btn_finalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_finalizarActionPerformed
+        double din = Double.parseDouble(c_dinheiro.getText());
+        double cart = Double.parseDouble(c_dinheiro.getText());
+        double tot = Double.parseDouble(c_total.getText());
+        if (din >= tot || cart >= tot) {
+            JOptionPane.showMessageDialog(null, "Compra Realizada com sucesso!", "Venda", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Valor inserido é abaixo do esperado.", "Venda", JOptionPane.ERROR_MESSAGE);     
+        }
+    }//GEN-LAST:event_btn_finalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,17 +247,15 @@ public class Tela_Pagamento extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btn_Group;
+    private javax.swing.JButton btn_finalizar;
     private javax.swing.JTextField c_cartao;
     private javax.swing.JTextField c_dinheiro;
-    private javax.swing.JTextField c_totalPag;
-    private javax.swing.JTextField c_troco;
-    private javax.swing.JRadioButton jB_Cartão;
+    private javax.swing.JTextField c_total;
+    private javax.swing.JRadioButton jB_Cartao;
     private javax.swing.JRadioButton jB_Dinheiro;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

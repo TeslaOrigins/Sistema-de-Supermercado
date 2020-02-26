@@ -1,12 +1,9 @@
 package Interface_sistema_de_supermercado;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -576,7 +573,10 @@ public final class Tela_Vendas extends javax.swing.JFrame {
 
     private void btn_pagActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pagActionPerformed
         this.dispose(); //Encerra a compra e fecha
+        Produto pagamento = new Produto();
+        pagamento.setTotPagamento(c_totalPag.getText());
         Tela_Pagamento Tela_P = new Tela_Pagamento(); //Instancia tela pag
+        Tela_P.exportarPag(pagamento);
         Tela_P.setVisible(true);             //Mostrar tela pag 
         Tela_P.setLocationRelativeTo(null);     //Centro
         Tela_P.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
