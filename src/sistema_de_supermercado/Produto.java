@@ -106,6 +106,35 @@ public class Produto {
         }
         return "Produto Cadastrado";
     }
+    
+    public String removerEst(Integer compara) throws IOException {
+        try{                                                   //tenta executar o codigo e indica que possa ocorrer um exceçaõ(erro)
+            Scanner in = new Scanner(new File("Estoque.txt")); //Construtor que recebe o obejeto do tipo cadastro.txt,escreve diretamente no arquivo se ele existir e acrescenta .
+            FileWriter fw = new FileWriter ("ARQUIVO-tmp",true);
+            StringBuilder arq = new StringBuilder();
+            String s;
+            while(in.hasNextLine()){
+                s = in.nextLine();
+                String[] sArray = s.split(";");
+                
+                if(Integer.parseInt(sArray[0]) != compara){
+                    arq.append(s);
+                    arq.append('\n');
+                }                
+            }
+            fw.write(arq.toString());
+            fw.flush();                                       // envia todos os dados naquele momento, obriga a escrever os dados no disco
+            fw.close();                                       // fecha o fluxo e libera todos os recursos do sistema associados a ele.
+            
+            new File("Estoque.txt").delete();
+            new File("ARQUIVO-tmp").renameTo(new File("Estoque.txt"));   
+        }catch (IOException ex){    //serve para tratar as exceçoes(erros)  
+            Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        
+        return "Removido com sucesso";
+    }
+    
     // Formatar o double preço recebido
     public static String priceComDecimal(Double price) {
         DecimalFormat formatter = new DecimalFormat("###,###,###.00");
