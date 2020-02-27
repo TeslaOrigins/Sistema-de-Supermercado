@@ -197,7 +197,7 @@ public class Background extends javax.swing.JFrame {
             public void run() {
                 new Background().setVisible(false);
             }
-        });
+        });//asda
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
