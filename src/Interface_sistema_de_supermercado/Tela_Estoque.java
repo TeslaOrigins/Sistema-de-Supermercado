@@ -206,6 +206,16 @@ public class Tela_Estoque extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tbl_prod1);
+        if (tbl_prod1.getColumnModel().getColumnCount() > 0) {
+            tbl_prod1.getColumnModel().getColumn(0).setResizable(false);
+            tbl_prod1.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tbl_prod1.getColumnModel().getColumn(1).setResizable(false);
+            tbl_prod1.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tbl_prod1.getColumnModel().getColumn(2).setResizable(false);
+            tbl_prod1.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tbl_prod1.getColumnModel().getColumn(3).setResizable(false);
+            tbl_prod1.getColumnModel().getColumn(3).setPreferredWidth(20);
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
