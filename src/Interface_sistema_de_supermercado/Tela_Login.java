@@ -31,8 +31,6 @@ public class Tela_Login extends javax.swing.JFrame {
      */
     public Tela_Login() {
         initComponents();
-        Background b = new Background();
-        b.setVisible(true);
         this.setLocationRelativeTo(null); //tela no centro
         setResizable(false); //bloqueia o maximizar 
 
@@ -329,11 +327,12 @@ public class Tela_Login extends javax.swing.JFrame {
                 }
             }
                              
-            Background b = new Background();
+
             switch(tipo){
                 case TipoUsuario.USUARIO_FUNCIONARIO_INT:
+                    Background b = new Background();
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                b.setVisible(true);
+                //b.setVisible(true);
                 Tela_Vendas Tela_IF = new Tela_Vendas();  
                 Tela_IF.setVisible(false);                  // serve para mostrar o Jframe na tela
                 Tela_IF.setLocationRelativeTo(null);       // tela no centro
@@ -341,8 +340,9 @@ public class Tela_Login extends javax.swing.JFrame {
                 this.dispose();                           //fecha a tela após o click
                 break;
                 case TipoUsuario.USUARIO_GERENTE_INT:
+                Background c = new Background();
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                b.setVisible(true);
+               // c.setVisible(true);
                 Tela_Estoque Tela_IG = new Tela_Estoque();                 
                 Tela_IG.setVisible(false);                  // serve para mostrar o Jframe na tela
                 Tela_IG.setLocationRelativeTo(null);       // tela no centro
@@ -350,8 +350,9 @@ public class Tela_Login extends javax.swing.JFrame {
                 this.dispose();
                 break;
                 case TipoUsuario.USUARIO_CHEFE_INT:
+                 Background d = new Background();
                 JOptionPane.showMessageDialog(null, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                b.setVisible(true);
+                // d.setVisible(true);
                 Tela_Busca Tela_B = new Tela_Busca(); //chama a tela interna Chefe
                 Tela_B.setVisible(false);                  // serve para mostrar o Jframe na tela
                 Tela_B.setLocationRelativeTo(null);       // tela no centro

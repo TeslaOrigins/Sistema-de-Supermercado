@@ -8,3 +8,4 @@
 8;peito de Frango;14.0;30
 9;leite La Serenissima;4.5;80
 10;macarrão;3.6;100
+11;feijão;3.99;100

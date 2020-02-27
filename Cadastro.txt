@@ -14,3 +14,5 @@ joao;(11)11111-1111;277.075.074-79;joao;oJfTtchpM9WC/4Oqpu7FZQ==;1
 Paulo Edu;(77)77777-7777;068.845.415-12;paulo_teste;oa6wt5mDUta2OGGW8olZKw==;1
 Paulo Edu;(89)99999-9999;068.845.415-12;paulo_g;oa6wt5mDUta2OGGW8olZKw==;2
 Natalo Santos;(  )     -    ;080.398.975-05;natalo;o7QDW9xu0UJ06RPClMYv2Q==;1
+natalo;(85)63438-5453;080.398.975-05;natalo1;o7QDW9xu0UJ06RPClMYv2Q==;1
+natalo;(65)64536-3456;080.398.975-05;nelma;tQoPmvjD/Zr6DMyhaKoxyA==;1

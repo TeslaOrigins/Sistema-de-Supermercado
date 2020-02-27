@@ -29,6 +29,7 @@ public class Tela_Estoque extends javax.swing.JFrame {
 
     public Tela_Estoque() {
         Background b= new Background();
+        b.setVisible(true);
         initComponents();
         setLocationRelativeTo(null); //ela no centro
         setResizable(false); // bloqueia o maximizar 

@@ -42,6 +42,8 @@ public class Background extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu_Cad = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu_Edit = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -49,7 +51,7 @@ public class Background extends javax.swing.JFrame {
         jMenu_Vendas = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu_Estoque = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +80,23 @@ public class Background extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jMenu_Cad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/add_user_icon.png"))); // NOI18N
+        jMenu_Cad.setText("Cadastro");
+        jMenu_Cad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu_CadActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Cadastro Funcionários");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu_Cad.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu_Cad);
         jMenuBar1.add(jMenu3);
 
         jMenu_Edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Editar_user_icon.png"))); // NOI18N
@@ -113,13 +132,13 @@ public class Background extends javax.swing.JFrame {
         jMenu_Estoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Estoque_icon.png"))); // NOI18N
         jMenu_Estoque.setText("Estoque");
 
-        jMenuItem2.setText("Tela Estoque");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem4.setText("Estoque Produtos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu_Estoque.add(jMenuItem2);
+        jMenu_Estoque.add(jMenuItem4);
 
         jMenuBar1.add(jMenu_Estoque);
 
@@ -139,14 +158,34 @@ public class Background extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenu_CadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_CadActionPerformed
+       
+    }//GEN-LAST:event_jMenu_CadActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Tela_Cadastro Tela_C;
+        Tela_C = new Tela_Cadastro();
+        Tela_C.setVisible(true);
+        Tela_C.setLocationRelativeTo(null);
+        Tela_C.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Tela_Busca b;
+       Tela_Busca tela_b;
         try {
-            b = new Tela_Busca();
-            b.setVisible(true);  
+             tela_b = new Tela_Busca();
+             tela_b.setVisible(true);
+             tela_b.setLocationRelativeTo(null);
+             tela_b.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+                        
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Background.class.getName()).log(Level.SEVERE, null, ex);
         }
+      
+   
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -160,10 +199,16 @@ public class Background extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        Tela_Estoque t = new Tela_Estoque();
-        t.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Tela_Estoque te;
+        te= new Tela_Estoque();
+        te.setVisible(true);
+        te.setLocationRelativeTo(null);
+        te.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.dispose();
+        
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,7 +242,7 @@ public class Background extends javax.swing.JFrame {
             public void run() {
                 new Background().setVisible(false);
             }
-        });//asda
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,6 +252,8 @@ public class Background extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenu jMenu_Cad;
     private javax.swing.JMenu jMenu_Edit;
     private javax.swing.JMenu jMenu_Estoque;
     private javax.swing.JMenu jMenu_Relat;
