@@ -42,8 +42,6 @@ public class Background extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu_Cad = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenu_Edit = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -79,23 +77,6 @@ public class Background extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu_Cad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/add_user_icon.png"))); // NOI18N
-        jMenu_Cad.setText("Cadastro");
-        jMenu_Cad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu_CadActionPerformed(evt);
-            }
-        });
-
-        jMenuItem2.setText("Cadastro Funcionários");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        jMenu_Cad.add(jMenuItem2);
-
-        jMenuBar1.add(jMenu_Cad);
         jMenuBar1.add(jMenu3);
 
         jMenu_Edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Editar_user_icon.png"))); // NOI18N
@@ -147,19 +128,6 @@ public class Background extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenu_CadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_CadActionPerformed
-       
-    }//GEN-LAST:event_jMenu_CadActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-   Tela_Cadastro Tela_C;
-        Tela_C = new Tela_Cadastro();
-        Tela_C.setVisible(true);
-        Tela_C.setLocationRelativeTo(null);
-        Tela_C.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
       
@@ -221,9 +189,7 @@ public class Background extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenu jMenu_Cad;
     private javax.swing.JMenu jMenu_Edit;
     private javax.swing.JMenu jMenu_Estoque;
     private javax.swing.JMenu jMenu_Relat;
