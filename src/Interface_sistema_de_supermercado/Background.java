@@ -49,6 +49,7 @@ public class Background extends javax.swing.JFrame {
         jMenu_Vendas = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu_Estoque = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,6 +112,15 @@ public class Background extends javax.swing.JFrame {
 
         jMenu_Estoque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Estoque_icon.png"))); // NOI18N
         jMenu_Estoque.setText("Estoque");
+
+        jMenuItem2.setText("Tela Estoque");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu_Estoque.add(jMenuItem2);
+
         jMenuBar1.add(jMenu_Estoque);
 
         setJMenuBar(jMenuBar1);
@@ -130,12 +140,13 @@ public class Background extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-      
-   
-       
-
-
-
+        Tela_Busca b;
+        try {
+            b = new Tela_Busca();
+            b.setVisible(true);  
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Background.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -148,6 +159,11 @@ public class Background extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Tela_Estoque t = new Tela_Estoque();
+        t.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,6 +205,7 @@ public class Background extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu jMenu_Edit;
     private javax.swing.JMenu jMenu_Estoque;
